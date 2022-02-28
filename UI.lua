@@ -331,7 +331,7 @@ Content.Parent = FrameTemplate
 			local h = Thing:FindFirstChild(Button)  
 			if not h then error("Button not found !") return end
 			if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
-			return tonumber(h.Text)		
+			return h.Text
 		end
 	
 	function AddSubText(Thingy, Name)
