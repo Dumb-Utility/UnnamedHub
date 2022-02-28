@@ -8,6 +8,7 @@ local Frame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
 local TextBox = Instance.new("TextBox")
 local CheckBoxTemplate = Instance.new("TextLabel")
+local StringBoxTemplate = Instance.new("TextBox")
 local Frame_2 = Instance.new("TextButton")
 local check = Instance.new("ImageLabel")
 local UICorner_2 = Instance.new("UICorner")
@@ -134,6 +135,20 @@ SubName.Text = "SubName"
 SubName.TextColor3 = Color3.fromRGB(255, 255, 255)
 SubName.TextSize = 14.000
 SubName.TextWrapped = true
+		
+StringBoxTemplate.Name = "StringBoxTemplate"
+StringBoxTemplate.Parent = Template
+StringBoxTemplate.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
+StringBoxTemplate.BackgroundTransparency = 0.500
+StringBoxTemplate.Position = UDim2.new(0.0701754391, 0, 2.02777767, 0)
+StringBoxTemplate.Size = UDim2.new(0, 147, 0, 27)
+StringBoxTemplate.Font = Enum.Font.GothamSemibold
+StringBoxTemplate.MultiLine = true
+StringBoxTemplate.Text = ""
+StringBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+StringBoxTemplate.TextScaled = true
+StringBoxTemplate.TextSize = 14.000
+StringBoxTemplate.TextWrapped = true		
 
 FrameTemplate.Name = "FrameTemplate"
 FrameTemplate.Parent = Template
@@ -231,6 +246,35 @@ Content.Parent = FrameTemplate
 			Run()
 		end)
 	end
+		
+		function AddTextBox(Thingy, Name)
+			local Thing
+			Thing = Frames:FindFirstChild(Thingy)
+			if Thing == nil then error("Frame not found !") return end
+			local FirstBut = Thing:GetAttribute("First")
+			local LastBut = Thing:WaitForChild("LastBut").Value
+			local but = ButtonTemplate:Clone()
+			but.Parent = Thing
+			but.Name = Name
+			but.Text = Name
+			if FirstBut ~= 0 then
+				if FirstBut == 1 then
+					but.Position = UDim2.fromOffset(7, LastBut.Position.Y.Offset + 90)
+					Thing:SetAttribute("First", 2)
+				else
+					if LastBut:FindFirstChild("SubName") then
+						but.Position = UDim2.fromOffset(7, LastBut.Position.Y.Offset + 20)
+					else
+						but.Position = UDim2.fromOffset(7, LastBut.Position.Y.Offset + 40)
+					end
+				end
+				--but.Position = UDim2.fromScale(LastBut.Position.X.Scale)
+			else
+				Thing:SetAttribute("First", 1)
+			end
+			Thing:WaitForChild("LastBut").Value = but
+			print(Thing:WaitForChild("LastBut").Value)
+		end
 	
 	function AddNumberBox(Thingy, Name, Run)
 		local Thing
@@ -276,10 +320,19 @@ Content.Parent = FrameTemplate
 		if Thing == nil then error("Frame not found !") return end
 		local h = Thing:FindFirstChild(Button)  
 		if not h then error("Button not found !") return end
-		if not h:FindFirstChild("Frame"):FindFirstChild("TextBox") then error("The item isn't number button !") return end
+		if not h:FindFirstChild("Frame"):FindFirstChild("TextBox") then error("The item isn't a number button !") return end
 		h = h:FindFirstChild("Frame"):FindFirstChild("TextBox")
 		return tonumber(h.Text)		
 	end
+		
+		function GetString(Frame, Button)
+			local Thing = Frames:FindFirstChild(Frame)
+			if Thing == nil then error("Frame not found !") return end
+			local h = Thing:FindFirstChild(Button)  
+			if not h then error("Button not found !") return end
+			if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
+			return tonumber(h.Text)		
+		end
 	
 	function AddSubText(Thingy, Name)
 		local Thing
