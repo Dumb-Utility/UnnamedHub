@@ -253,7 +253,7 @@ Content.Parent = FrameTemplate
 			if Thing == nil then error("Frame not found !") return end
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
-			local but = ButtonTemplate:Clone()
+			local but = StringBoxTemplate:Clone()
 			but.Parent = Thing
 			but.Name = Name
 			but.Text = Name
