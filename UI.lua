@@ -1,7 +1,8 @@
 return {
 	-- Instances:
 	CreateGui = function()
-		local ScreenGui = Instance.new("ScreenGui")
+	    local ScreenGui = Instance.new("ScreenGui")
+	    local Hide = Instance.new("Frame")
 		local Template = Instance.new("Folder")
 		local NumberBoxTemplate = Instance.new("TextButton")
 		local Frame = Instance.new("Frame")
@@ -18,7 +19,7 @@ return {
 		local UIGradient = Instance.new("UIGradient")
 		local SubName = Instance.new("TextLabel")
 		local FrameTemplate = Instance.new("Frame")
-		local Button = Instance.new("ImageLabel")
+		local Button = Instance.new("ImageButton")
 		local SessionName = Instance.new("TextLabel")
 		local ContentFrame = Instance.new("Frame")
 		local Content = Instance.new("Folder")
@@ -29,9 +30,16 @@ return {
 
 		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 		ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	    ScreenGui.ResetOnSpawn = false
+	    ScreenGui.IgnoreGuiInset = true
 		Frames.Name = "Frames"
-		Frames.Parent = ScreenGui
-
+      	Frames.Parent = ScreenGui
+	    Hide.Parent = ScreenGui
+	    Hide.Size = UDim2.new(1,0,1,0)
+	    Hide.ZIndex = 0
+	    Hide.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	    Hide.BackgroundTransparency = 0.5
+ 
 		Template.Name = "Template"
 		Template.Parent = ScreenGui
 
@@ -192,13 +200,28 @@ return {
 		Content.Parent = FrameTemplate
 		-- Scripts:
 		local LastPos = 0
-		local First = 1
+	    local First = 1
+	local vis = false
+	local Activate = _G.Activate
+	Hide.Visible = vis
+	local UserInputService = game:GetService("UserInputService")
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+		print(input.KeyCode.Name:lower())
+		if input.KeyCode.Name:lower() ~= Activate:lower() then return end
+		vis = not vis
+		Hide.Visible = vis
+		for _,v in pairs(Frames:GetChildren()) do
+			v.Visible = vis
+		end
+	end)
+	
 		function AddFrame(FName, Size)
 			local Cop = FrameTemplate:Clone()
 			Cop.Name = FName
 			Cop:FindFirstChild("SessionName").Text = FName
 			Cop.Parent = Frames
-			Cop.Visible = true
+			Cop.Visible = vis
 			if First == 0 then
 				Cop.Position = UDim2.fromOffset(LastPos.X.Offset + 230, 0)
 			else
@@ -210,19 +233,32 @@ return {
 			end
 			Cop:SetAttribute("First", 0)
 			local e = Instance.new("ObjectValue", Cop)
-			e.Name = "LastBut"
+		    e.Name = "LastBut"
+		Cop:WaitForChild("Button").MouseButton1Click:Connect(function()
+			if Cop:WaitForChild("ContentFrame").Visible == true then
+				Cop:WaitForChild("Button").Rotation = 0
+			else
+				Cop:WaitForChild("Button").Rotation = 180
+			end
+			for _,v in pairs(Cop:WaitForChild("Content"):GetChildren()) do
+				v.Visible = not Cop:WaitForChild("ContentFrame").Visible
+			end
+			Cop:WaitForChild("ContentFrame").Visible = not Cop:WaitForChild("ContentFrame").Visible
+		end)
 			Cop.Active = true
-			Cop.Draggable = true
+		    Cop.Draggable = true
+	
 		end
 
 		function AddButton(Thingy, Name, Run)
 			local Thing
 			Thing = Frames:FindFirstChild(Thingy)
-			if Thing == nil then error("Frame not found !") return end
+		    if Thing == nil then error("Frame not found !") return end
+		   local Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
 			local but = ButtonTemplate:Clone()
-			but.Parent = Thing
+			but.Parent = Thinge
 			but.Name = Name
 			but.Text = Name
 			if FirstBut ~= 0 then
@@ -252,13 +288,14 @@ return {
 		end
 
 		function AddTextBox(Thingy, Name)
-			local Thing
-			Thing = Frames:FindFirstChild(Thingy)
-			if Thing == nil then error("Frame not found !") return end
+		local Thing
+		Thing = Frames:FindFirstChild(Thingy)
+		if Thing == nil then error("Frame not found !") return end
+		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
 			local but = StringBoxTemplate:Clone()
-			but.Parent = Thing
+			but.Parent = Thinge
 			but.Name = Name
 			but.Text = Name
 			if FirstBut ~= 0 then
@@ -285,13 +322,14 @@ return {
 		end
 
 		function AddNumberBox(Thingy, Name, Run)
-			local Thing
-			Thing = Frames:FindFirstChild(Thingy)
-			if Thing == nil then error("Frame not found !") return end
+		local Thing
+		Thing = Frames:FindFirstChild(Thingy)
+		if Thing == nil then error("Frame not found !") return end
+		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
 			local but = NumberBoxTemplate:Clone()
-			but.Parent = Thing
+			but.Parent = Thinge
 			but.Name = Name
 			but.Text = Name
 			if FirstBut ~= 0 then
@@ -328,9 +366,11 @@ return {
 		end
 
 		function GetNumber(Frame, Button)
-			local Thing = Frames:FindFirstChild(Frame)
-			if Thing == nil then error("Frame not found !") return end
-			local h = Thing:FindFirstChild(Button)  
+		local Thing
+		Thing = Frames:FindFirstChild(Frame)
+		if Thing == nil then error("Frame not found !") return end
+		Thinge = Thing:WaitForChild("Content")
+		local h = Thing.Content:FindFirstChild(Button)  
 			if not h then error("Button not found !") return end
 			if not h:FindFirstChild("Frame"):FindFirstChild("TextBox") then error("The item isn't a number button !") return end
 			h = h:FindFirstChild("Frame"):FindFirstChild("TextBox")
@@ -338,22 +378,25 @@ return {
 		end
 
 		function GetString(Frame, Button)
-			local Thing = Frames:FindFirstChild(Frame)
-			if Thing == nil then error("Frame not found !") return end
-			local h = Thing:FindFirstChild(Button)  
+		local Thing
+		Thing = Frames:FindFirstChild(Frame)
+		if Thing == nil then error("Frame not found !") return end
+		Thinge = Thing:WaitForChild("Content")
+			local h = Thing.Content:FindFirstChild(Button)  
 			if not h then error("Button not found !") return end
 			if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
 			return h.Text
 		end
 
 		function AddSubText(Thingy, Name)
-			local Thing
-			Thing = Frames:FindFirstChild(Thingy)
-			if Thing == nil then error("Frame not found !") return end
+		local Thing
+		Thing = Frames:FindFirstChild(Thingy)
+		if Thing == nil then error("Frame not found !") return end
+		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
 			local but = SubSectionTemplate:Clone()
-			but.Parent = Thing
+			but.Parent = Thinge
 			but.Name = Name
 			but.SubName.Text = Name
 			if FirstBut ~= 0 then
@@ -375,13 +418,14 @@ return {
 		end
 
 		function AddCheckBox(Thingy, Name, On, Off)
-			local Thing
-			Thing = Frames:FindFirstChild(Thingy)
-			if Thing == nil then error("Frame not found !") return end
+		local Thing
+		Thing = Frames:FindFirstChild(Thingy)
+		if Thing == nil then error("Frame not found !") return end
+		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
 			local but = CheckBoxTemplate:Clone()
-			but.Parent = Thing
+			but.Parent = Thinge
 			but.Name = Name
 			but.Text = Name
 			if FirstBut ~= 0 then
@@ -416,7 +460,7 @@ return {
 					Off()
 				end
 			end)
-		end
-
-	end
+		end	
+	
+end
 }
