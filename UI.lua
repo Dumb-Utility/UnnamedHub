@@ -1,6 +1,7 @@
 return {
 	-- Instances:
 	CreateGui = function()
+		if _G.Activate == nil then _G.Activate = "rightshift" end
 	    local ScreenGui = Instance.new("ScreenGui")
 	    local Hide = Instance.new("Frame")
 		local Template = Instance.new("Folder")
