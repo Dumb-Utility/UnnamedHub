@@ -1,11 +1,8 @@
 function notify(Message)
 	game:GetService("StarterGui"):SetCore("SendNotification", { 
-		Title = "FE Invisible";
+		Title = "Hi";
 		Text = Message;
 		Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
-	local sound = Instance.new("Sound")
-	sound.SoundId = "rbxassetid://7046168694"
-	SoundService:PlayLocalSound(sound)
 end
 
 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/WIP/main/UI.lua"))()
