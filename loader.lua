@@ -1,3 +1,5 @@
+if not game:IsLoaded() then game.Loaded:Wait() end
+
 function notify(Message)
 	game:GetService("StarterGui"):SetCore("SendNotification", { 
 		Title = "UnnamedHub";
