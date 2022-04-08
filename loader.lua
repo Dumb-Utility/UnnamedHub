@@ -13,8 +13,6 @@ if game:GetService("Players").LocalPlayer.UserId ~= 2820225419 and DevBuild == t
 
 local games = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games.lua"))()
 
-print(games.games)
-
 for _,v in pairs(games.games) do
   if v == game.PlaceId then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games/"...tostring(game.PlaceId)..".lua"))()
