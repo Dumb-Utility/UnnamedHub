@@ -18,6 +18,7 @@ for _,v in pairs(games.games) do
   if v == game.PlaceId then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games/"..tostring(game.PlaceId)..".lua"))()
 	notify("Welcome "..game:GetService("Players").LocalPlayer.Name)
+        warn
 	notify("Press Right Shift to show the ui")
         loaded = true
     break
