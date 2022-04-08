@@ -1,15 +1,7 @@
-function notify(Message)
-	game:GetService("StarterGui"):SetCore("SendNotification", { 
-		Title = "Hi";
-		Text = Message;
-		Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
-end
 
 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/WIP/main/UI.lua"))()
 
 gui.CreateGui()
-
-notify("Press Right Shift to show the ui")
 
 AddFrame("Launcher")
 AddButton("Launcher", "Remove Cooldown", function() 
