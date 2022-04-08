@@ -1,6 +1,7 @@
 if not game:IsLoaded() then game.Loaded:Wait() end
 
 local DevBuild = false
+local loaded = false
 
 function notify(Message)
 	game:GetService("StarterGui"):SetCore("SendNotification", { 
@@ -18,6 +19,9 @@ for _,v in pairs(games.games) do
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games/"..tostring(game.PlaceId)..".lua"))()
 	notify("Welcome "..game:GetService("Players").LocalPlayer.Name)
 	notify("Press Right Shift to show the ui")
+        loaded = true
     break
   end
 end
+
+if loaded == false then notify("This game isn't supported yet.") end
