@@ -17,7 +17,7 @@ print(games.games)
 
 for _,v in pairs(games.games) do
   if v == game.PlaceId then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games/2248408710"...tostring(game.PlaceId).."lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games/"...tostring(game.PlaceId).."lua"))()
     break
   end
 end
