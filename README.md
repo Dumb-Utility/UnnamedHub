@@ -12,3 +12,8 @@ UnnamedHub have mostly server-side modifying scripts than client-side scripts as
 UnnamedHub isn't an external application and only require to have an executor (synapse x for example) and a brain.
 
 The proccess is simple:
+Copy and paste this script into your executor and execute it.
+```lua
+_G.Activate = nil -- Or a button to activate ("e", "rightshift")
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/loader.lua'))()
+```
