@@ -1,6 +1,6 @@
 if not game:IsLoaded() then game.Loaded:Wait() end
 
-local DevBuild = true
+local DevBuild = false
 local loaded = false
 
 function notify(Message)
