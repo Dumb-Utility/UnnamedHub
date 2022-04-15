@@ -28,7 +28,9 @@ return {
 
 
 		--Properties:
-
+		if syn and syn.protect_gui then
+                syn.protect_gui(ScreenGui)
+	        end
 		ScreenGui.Parent = game:GetService("CoreGui")
 		ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	    ScreenGui.ResetOnSpawn = false
