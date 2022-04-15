@@ -210,7 +210,7 @@ return {
 	local UserInputService = game:GetService("UserInputService")
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then return end
-		print(input.KeyCode.Name:lower())
+		-- print(input.KeyCode.Name:lower())
 		if input.KeyCode.Name:lower() ~= Activate:lower() then return end
 		vis = not vis
 		Hide.Visible = vis
@@ -284,7 +284,7 @@ return {
 				Thing:SetAttribute("First", 1)
 			end
 			Thing:WaitForChild("LastBut").Value = but
-			print(Thing:WaitForChild("LastBut").Value)
+			-- print(Thing:WaitForChild("LastBut").Value)
 			but.MouseButton1Click:Connect(function()
 				Run()
 			end)
@@ -321,7 +321,7 @@ return {
 				Thing:SetAttribute("First", 1)
 			end
 			Thing:WaitForChild("LastBut").Value = but
-			print(Thing:WaitForChild("LastBut").Value)
+			-- print(Thing:WaitForChild("LastBut").Value)
 		end
 
 		function AddNumberBox(Thingy, Name, Run)
@@ -355,7 +355,7 @@ return {
 				Thing:SetAttribute("First", 1)
 			end
 			Thing:WaitForChild("LastBut").Value = but
-			print(Thing:WaitForChild("LastBut").Value)
+			-- print(Thing:WaitForChild("LastBut").Value)
 			local TextBox = but.Frame.TextBox
 			TextBox:GetPropertyChangedSignal("Text"):Connect(function()
 				TextBox.Text = TextBox.Text:gsub('%D+', '');
@@ -452,7 +452,7 @@ return {
 				Thing:SetAttribute("First", 1)
 			end
 			Thing:WaitForChild("LastBut").Value = but
-			print(Thing:WaitForChild("LastBut").Value)
+			-- print(Thing:WaitForChild("LastBut").Value)
 			but:WaitForChild("Frame").MouseButton1Click:Connect(function()
 				but.Frame.check.Visible = not but.Frame.check.Visible
 				-- Using not to fix the thing going opposite (on = off, off = on)
