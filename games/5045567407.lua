@@ -7,8 +7,23 @@ gui.CreateGui()
 
 AddFrame("Yes")
 
+function StringToRGB(text)
+local length1=string.find(text,",")
+length1=length1-1
+local num1=string.sub(text,1,length1)
+local length2=string.find(text,",",length1+2)
+length2=length2-1
+local num2=string.sub(text,length1+2,length2)
+local num3=string.sub(text,length2+2,string.len(text))
+local color=num1,num2,num3
+    -- print("[StringToRGB] =>", color)
+return color
+end
+
 AddButton("Yes", "Change colors", function()
-    local RGB = Color3.fromRGB(GetString("Yes", "RGB"))
+       -- print("[RGB STRING] =>", GetString("Yes", "RGB"))
+    local RGB = StringToRGB(GetString("Yes", "RGB"))
+       -- print("[RGB] =>", RGB)
     if not LP.Character:FindFirstChild("PaintBucket") then LP.Backpack.PaintBucket.Parent = LP.Character warn("Auto equipped the PaintBucket") end
 
 for i, v in pairs(game:GetService("Workspace").Provinces:GetChildren()) do
