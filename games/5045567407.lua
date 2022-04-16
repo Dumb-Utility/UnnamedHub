@@ -32,7 +32,7 @@ for i, v in pairs(game:GetService("Workspace").Provinces:GetChildren()) do
        [1] = "PaintPart",
        [2] = {
            ["Part"] = v,
-           ["Color"] = RGB
+           ["Color"] = Color3.fromRGB(RGB)
        }
    }
    
@@ -47,3 +47,17 @@ end)
 AddTextBox("Yes", "RGB")
   
 AddButton("Yes", "Just that yea", function() end)
+
+AddTextBox("Yes", "Player Name")
+AddTextBox("Yes", "Text")
+
+AddButton("Yes", "Change Name", function()
+local Player = GetString("Yes", "Player Name")
+local NewName = GetString("Yes", "Text")
+for _, australia in pairs(game:GetService("Players"):GetPlayers()) do
+		if string.sub(string.lower(australia.Name), 0, string.len(Player)) == string.lower(Player) then
+			local hi = australia.Character:FindFirstChild:FindFirstChildWhichIsA("Model")
+			hi.ServerHandler:FireServer(NewName)
+		end
+	end
+end)
