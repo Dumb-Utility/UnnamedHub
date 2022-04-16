@@ -142,7 +142,6 @@ SubName.TextWrapped = true
 StringBoxTemplate.Name = "StringBoxTemplate"
 StringBoxTemplate.Parent = Template
 StringBoxTemplate.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-StringBoxTemplate.BackgroundTransparency = 0.500
 StringBoxTemplate.BorderColor3 = Color3.fromRGB(255, 255, 255)
 StringBoxTemplate.Position = UDim2.new(0.0701754391, 0, 2.02777767, 0)
 StringBoxTemplate.Size = UDim2.new(0, 147, 0, 25)
@@ -188,7 +187,7 @@ ContentFrame.Name = "ContentFrame"
 ContentFrame.Parent = FrameTemplate
 ContentFrame.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
 ContentFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-ContentFrame.BorderSizePixel = 2
+ContentFrame.BorderSizePixel = 1
 ContentFrame.Position = UDim2.new(0, 0, 1, 0)
 ContentFrame.Size = UDim2.new(0, 171, 0, 325)
 
