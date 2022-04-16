@@ -56,13 +56,13 @@ NumberBoxTemplate.Text = "NumberName"
 NumberBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
 NumberBoxTemplate.TextSize = 14.000
 
-Frame_2.Parent = NumberBoxTemplate
-Frame_2.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-Frame_2.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Frame_2.Position = UDim2.new(1.06201553, 0, 0.100000195, 0)
-Frame_2.Size = UDim2.new(0, 26, 0, 25)
+Frame.Parent = NumberBoxTemplate
+Frame.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(1.06201553, 0, 0.100000195, 0)
+Frame.Size = UDim2.new(0, 26, 0, 25)
 
-TextBox.Parent = Frame_2
+TextBox.Parent = Frame
 TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.BackgroundTransparency = 1.000
 TextBox.BorderColor3 = Color3.fromRGB(27, 42, 53)
@@ -88,16 +88,16 @@ CheckBoxTemplate.Text = "CheckBoxName"
 CheckBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
 CheckBoxTemplate.TextSize = 14.000
 
-Frame_3.Name = "Frame"
-Frame_3.Parent = CheckBoxTemplate
-Frame_3.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-Frame_3.BorderColor3 = Color3.fromRGB(255, 255, 255)
-Frame_3.Position = UDim2.new(1.06201553, 0, 0.100000195, 0)
-Frame_3.Size = UDim2.new(0, 26, 0, 25)
-Frame_3.Text = ""
+Frame_2.Name = "Frame"
+Frame_2.Parent = CheckBoxTemplate
+Frame_2.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+Frame_2.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Frame_2.Position = UDim2.new(1.06201553, 0, 0.100000195, 0)
+Frame_2.Size = UDim2.new(0, 26, 0, 25)
+Frame_2.Text = ""
 
 check.Name = "check"
-check.Parent = Frame_3
+check.Parent = Frame_2
 check.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
 check.BackgroundTransparency = 1.000
 check.BorderColor3 = Color3.fromRGB(255, 255, 255)
