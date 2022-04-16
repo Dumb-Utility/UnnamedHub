@@ -47,7 +47,6 @@ return {
 NumberBoxTemplate.Name = "NumberBoxTemplate"
 NumberBoxTemplate.Parent = Template
 NumberBoxTemplate.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-NumberBoxTemplate.BackgroundTransparency = 0.500
 NumberBoxTemplate.BorderColor3 = Color3.fromRGB(255, 255, 255)
 NumberBoxTemplate.Position = UDim2.new(0, 0, 5.16666698, 0)
 NumberBoxTemplate.Size = UDim2.new(0, 129, 0, 25)
@@ -64,7 +63,6 @@ Frame.Size = UDim2.new(0, 26, 0, 25)
 
 TextBox.Parent = Frame
 TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.BackgroundTransparency = 1.000
 TextBox.BorderColor3 = Color3.fromRGB(27, 42, 53)
 TextBox.Size = UDim2.new(0, 26, 0, 25)
 TextBox.Font = Enum.Font.GothamSemibold
@@ -79,7 +77,6 @@ TextBox.TextWrapped = true
 CheckBoxTemplate.Name = "CheckBoxTemplate"
 CheckBoxTemplate.Parent = Template
 CheckBoxTemplate.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-CheckBoxTemplate.BackgroundTransparency = 0.500
 CheckBoxTemplate.BorderColor3 = Color3.fromRGB(255, 255, 255)
 CheckBoxTemplate.Position = UDim2.new(0, 0, 3.63888884, 0)
 CheckBoxTemplate.Size = UDim2.new(0, 129, 0, 25)
