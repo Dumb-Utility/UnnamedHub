@@ -1,7 +1,7 @@
 return {
 	-- Instances:
 	CreateGui = function()
-		print("Ball")
+		print("Ball 2")
 		if _G.Activate == nil then _G.Activate = "rightshift" end
 	    local ScreenGui = Instance.new("ScreenGui")
 	    local Hide = Instance.new("Frame")
