@@ -12,11 +12,11 @@ end
 
 if game:GetService("Players").LocalPlayer.UserId ~= 2820225419 and DevBuild == true then notify("UnnamedHub isn't ready for release yet.") return end
 
-local games = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games.lua"))()
+local games = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/dev/games.lua"))()
 
 for _,v in pairs(games.games) do
   if v == game.PlaceId then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/games/"..tostring(game.PlaceId)..".lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/dev/games/"..tostring(game.PlaceId)..".lua"))()
 	notify("Welcome "..game:GetService("Players").LocalPlayer.Name)
         --warn("UnnamedHub loaded !")
 	notify("Press Right Shift to show the ui")
