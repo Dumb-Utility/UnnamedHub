@@ -62,8 +62,8 @@ Frame.Position = UDim2.new(1.06201553, 0, 0.100000195, 0)
 Frame.Size = UDim2.new(0, 26, 0, 25)
 
 TextBox.Parent = Frame
-TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextBox.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+TextBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.Size = UDim2.new(0, 26, 0, 25)
 TextBox.Font = Enum.Font.GothamSemibold
 TextBox.MultiLine = true
@@ -129,7 +129,7 @@ UIGradient.Parent = SubSectionTemplate
 
 SubName.Name = "SubName"
 SubName.Parent = SubSectionTemplate
-SubName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SubName.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
 SubName.BackgroundTransparency = 1.000
 SubName.Position = UDim2.new(0.0760233924, 0, -3.79999971, 0)
 SubName.Size = UDim2.new(0, 145, 0, 19)
@@ -174,7 +174,7 @@ Button.ImageRectSize = Vector2.new(36, 36)
 
 SessionName.Name = "SessionName"
 SessionName.Parent = FrameTemplate
-SessionName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SessionName.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
 SessionName.BackgroundTransparency = 1.000
 SessionName.Size = UDim2.new(0, 145, 0, 36)
 SessionName.Font = Enum.Font.GothamSemibold
@@ -187,7 +187,7 @@ ContentFrame.Name = "ContentFrame"
 ContentFrame.Parent = FrameTemplate
 ContentFrame.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
 ContentFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-ContentFrame.BorderSizePixel = 1
+ContentFrame.BorderSizePixel = 2
 ContentFrame.Position = UDim2.new(0, 0, 1, 0)
 ContentFrame.Size = UDim2.new(0, 171, 0, 325)
 
