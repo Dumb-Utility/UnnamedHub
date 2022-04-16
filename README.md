@@ -9,7 +9,7 @@ UnnamedHub have mostly server-side modifying scripts than client-side scripts as
 
 # Installation
 
-UnnamedHub isn't an external application and only require to have an executor (Synapse x for example) and a brain.
+UnnamedHub isn't an external application and only require to have an executor (Synapse X for example) and a brain.
 
 The proccess is simple:
 Copy and paste this script into your executor and execute it.
