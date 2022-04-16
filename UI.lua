@@ -1,21 +1,19 @@
 return {
 	-- Instances:
 	CreateGui = function()
+		print("Ball")
 		if _G.Activate == nil then _G.Activate = "rightshift" end
 	    local ScreenGui = Instance.new("ScreenGui")
 	    local Hide = Instance.new("Frame")
 		local Template = Instance.new("Folder")
 		local NumberBoxTemplate = Instance.new("TextButton")
 		local Frame = Instance.new("Frame")
-		local UICorner = Instance.new("UICorner")
 		local TextBox = Instance.new("TextBox")
 		local CheckBoxTemplate = Instance.new("TextLabel")
 		local StringBoxTemplate = Instance.new("TextBox")
 		local Frame_2 = Instance.new("TextButton")
 		local check = Instance.new("ImageLabel")
-		local UICorner_2 = Instance.new("UICorner")
 		local ButtonTemplate = Instance.new("TextButton")
-		local UICorner_3 = Instance.new("UICorner")
 		local SubSectionTemplate = Instance.new("Frame")
 		local UIGradient = Instance.new("UIGradient")
 		local SubName = Instance.new("TextLabel")
