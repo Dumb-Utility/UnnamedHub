@@ -29,6 +29,8 @@ return {
                 syn.protect_gui(ScreenGui)
 	        end
 		ScreenGui.Parent = game:GetService("CoreGui")
+		ScreenGui.Name = "UH"
+		ScreenGui:SetAttribute("Loaded", true)
 		ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	    ScreenGui.ResetOnSpawn = false
 	    ScreenGui.IgnoreGuiInset = true
@@ -193,8 +195,9 @@ ContentFrame.Size = UDim2.new(0, 171, 0, 325)
 Content.Name = "Content"
 Content.Parent = FrameTemplate
 		-- Scripts:
-		local LastPos = 0
-	    local First = 1
+		
+        local LastPos = 0
+	local First = 1
 	local vis = false
 	local Activate = _G.Activate
 	Hide.Visible = vis
