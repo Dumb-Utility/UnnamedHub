@@ -2,6 +2,18 @@ if not game:IsLoaded() then game.Loaded:Wait() end
 
 local DevBuild = false
 local loaded = false
+local AlreadyLoaded = false
+
+for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+	AlreadyLoaded = true	
+end
+end
+
+if AlreadyLoaded == true then
+error("UnnamedHub is already loaded")
+return
+end
 
 function notify(Message)
 	game:GetService("StarterGui"):SetCore("SendNotification", { 
