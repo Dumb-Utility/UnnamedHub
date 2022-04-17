@@ -37,4 +37,4 @@ for _,v in pairs(games.games) do
   end
 end
 
-if loaded == false then notify("This game isn't supported yet.") end
+if loaded == false then notify("This game isn't supported.") end
