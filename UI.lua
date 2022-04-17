@@ -1,6 +1,13 @@
 return {
 	-- Instances:
 	CreateGui = function()
+		local AlreadyLoaded = false
+		for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+                   if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+	              AlreadyLoaded = true	
+                    end
+                end
+		if AlreadyLoaded == true then return end
 		if _G.Activate == nil then _G.Activate = "rightshift" end
 	    local ScreenGui = Instance.new("ScreenGui")
 	    local Hide = Instance.new("Frame")
