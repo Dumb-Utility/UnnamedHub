@@ -52,12 +52,33 @@ AddTextBox("Yes", "Player Name")
 AddTextBox("Yes", "Text")
 
 AddButton("Yes", "Change Name", function()
-local Player = GetString("Yes", "Player Name")
+local Player = string.lower(GetString("Yes", "Player Name"))
 local NewName = GetString("Yes", "Text")
+local ok = false
+if Player == "all" then
+		ok = true
+		for _,australia in pairs(game:GetService("Players"):GetPlayers()) do
+		     	local hi = australia.Character:FindFirstChildWhichIsA("Model")
+			hi.ServerHandler:FireServer(NewName)
+		end
+end
+		
+if Player == "others" then
+		ok = true
+		for _,australia in pairs(game:GetService("Players"):GetPlayers()) do
+			   if v.Name ~= LP.Name then
+		     	local hi = australia.Character:FindFirstChildWhichIsA("Model")
+			hi.ServerHandler:FireServer(NewName)
+			end
+		end
+end
+	
+if ok == false then
 for _, australia in pairs(game:GetService("Players"):GetPlayers()) do
 		if string.sub(string.lower(australia.Name), 0, string.len(Player)) == string.lower(Player) then
-			local hi = australia.Character:FindFirstChild:FindFirstChildWhichIsA("Model")
+			local hi = australia.Character:FindFirstChildWhichIsA("Model")
 			hi.ServerHandler:FireServer(NewName)
 		end
 	end
+end
 end)
