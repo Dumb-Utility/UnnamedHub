@@ -10,7 +10,7 @@ end
 local LP = game:GetService("Players").LocalPlayer
 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UI.lua"))()
 
-notify("Script wont be completed for a while cuz of gae issue")
+notify("This script isn't completed yet.")
 
 gui.CreateGui()
 
@@ -37,7 +37,7 @@ AddFrame("Gun")
 AddButton("Gun", "Mod Guns", function()
 for _,v in pairs(LP.Backpack:GetChildren()) do
   if v:IsA("Tool") and v:FindFirstChild("ToolType") then
-    if v.ToolType.Value = "Gun" then	
+    if v.ToolType.Value == "Gun" then	
 local gun = v.ToolType
 gun.Auto.Value = true
 gun.Ammo.Value = 9999
