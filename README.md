@@ -14,6 +14,6 @@ UnnamedHub isn't an external application and only require to have an executor (S
 The proccess is simple:
 Copy and paste this script into your executor and execute it.
 ```lua
--- UnnamedHub Dev version use at your own risk.
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/dev/UH.lua'))()
+-- UnnamedHub by that one guy called Error-Cezar.
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UH.lua'))()
 ```

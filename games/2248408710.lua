@@ -1,5 +1,5 @@
 
-local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/dev/UI.lua"))()
+local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UI.lua"))()
 
 gui.CreateGui()
 
