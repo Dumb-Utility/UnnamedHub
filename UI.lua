@@ -1,6 +1,13 @@
 return {
 	-- Instances:
 	CreateGui = function()
+		local AlreadyLoaded = false
+		for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+                   if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+	              AlreadyLoaded = true	
+                    end
+                end
+		if AlreadyLoaded == true then return end
 		if _G.Activate == nil then _G.Activate = "rightshift" end
 	    local ScreenGui = Instance.new("ScreenGui")
 	    local Hide = Instance.new("Frame")
@@ -29,6 +36,8 @@ return {
                 syn.protect_gui(ScreenGui)
 	        end
 		ScreenGui.Parent = game:GetService("CoreGui")
+		ScreenGui.Name = "UH"
+		ScreenGui:SetAttribute("Loaded", true)
 		ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	    ScreenGui.ResetOnSpawn = false
 	    ScreenGui.IgnoreGuiInset = true
@@ -193,8 +202,9 @@ ContentFrame.Size = UDim2.new(0, 171, 0, 325)
 Content.Name = "Content"
 Content.Parent = FrameTemplate
 		-- Scripts:
-		local LastPos = 0
-	    local First = 1
+		
+        local LastPos = 0
+	local First = 1
 	local vis = false
 	local Activate = _G.Activate
 	Hide.Visible = vis
