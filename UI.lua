@@ -446,7 +446,7 @@ function module:CreateGui (name)
 
 		end
 
-
+return Tab
 	end	
 return Window
 end
