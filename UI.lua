@@ -1,6 +1,7 @@
-return {
+module = {}
 	-- Instances:
-	CreateGui = function()
+	module:CreateGui = function(Name)
+	        local Window = {}
 		local AlreadyLoaded = false
 		for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
                    if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
@@ -36,7 +37,7 @@ return {
                 syn.protect_gui(ScreenGui)
 	        end
 		ScreenGui.Parent = game:GetService("CoreGui")
-		ScreenGui.Name = "UH"
+		ScreenGui.Name = Name || "UH"
 		ScreenGui:SetAttribute("Loaded", true)
 		ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	    ScreenGui.ResetOnSpawn = false
@@ -202,7 +203,6 @@ ContentFrame.Size = UDim2.new(0, 171, 0, 325)
 Content.Name = "Content"
 Content.Parent = FrameTemplate
 		-- Scripts:
-		
         local LastPos = 0
 	local First = 1
 	local vis = false
@@ -220,7 +220,8 @@ Content.Parent = FrameTemplate
 		end
 	end)
 	
-		function AddFrame(FName, Size)
+		function Window:AddFrame(FName, Size)
+		        local Tab = {}
 			local Cop = FrameTemplate:Clone()
 			Cop.Name = FName
 			Cop:FindFirstChild("SessionName").Text = FName
@@ -250,14 +251,10 @@ Content.Parent = FrameTemplate
 			Cop:WaitForChild("ContentFrame").Visible = not Cop:WaitForChild("ContentFrame").Visible
 		end)
 			Cop.Active = true
-		    Cop.Draggable = true
-	
-		end
-
-		function AddButton(Thingy, Name, Run)
-			local Thing
-			Thing = Frames:FindFirstChild(Thingy)
-		    if Thing == nil then error("Frame not found !") return end
+		        Cop.Draggable = true
+		
+		local Thing = Cop
+		function Tab:AddButton(Name, Run)
 		   local Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
@@ -291,10 +288,7 @@ Content.Parent = FrameTemplate
 			end)
 		end
 
-		function AddTextBox(Thingy, Name)
-		local Thing
-		Thing = Frames:FindFirstChild(Thingy)
-		if Thing == nil then error("Frame not found !") return end
+		function Tab:AddTextBox(Name)
 		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
@@ -325,10 +319,7 @@ Content.Parent = FrameTemplate
 			-- print(Thing:WaitForChild("LastBut").Value)
 		end
 
-		function AddNumberBox(Thingy, Name, Run)
-		local Thing
-		Thing = Frames:FindFirstChild(Thingy)
-		if Thing == nil then error("Frame not found !") return end
+		function Tab:AddNumberBox(Name, Run)
 		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
@@ -369,10 +360,7 @@ Content.Parent = FrameTemplate
 			end)
 		end
 
-		function GetNumber(Frame, Button)
-		local Thing
-		Thing = Frames:FindFirstChild(Frame)
-		if Thing == nil then error("Frame not found !") return end
+		function Tab:GetNumber(Button)
 		Thinge = Thing:WaitForChild("Content")
 		local h = Thing.Content:FindFirstChild(Button)  
 			if not h then error("Button not found !") return end
@@ -381,10 +369,7 @@ Content.Parent = FrameTemplate
 			return tonumber(h.Text)		
 		end
 
-		function GetString(Frame, Button)
-		local Thing
-		Thing = Frames:FindFirstChild(Frame)
-		if Thing == nil then error("Frame not found !") return end
+		function Tab:GetString(Button)
 		Thinge = Thing:WaitForChild("Content")
 			local h = Thing.Content:FindFirstChild(Button)  
 			if not h then error("Button not found !") return end
@@ -392,10 +377,7 @@ Content.Parent = FrameTemplate
 			return h.Text
 		end
 
-		function AddSubText(Thingy, Name)
-		local Thing
-		Thing = Frames:FindFirstChild(Thingy)
-		if Thing == nil then error("Frame not found !") return end
+		function Tab:AddSubText(Name)
 		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
@@ -421,10 +403,7 @@ Content.Parent = FrameTemplate
 			Thing:WaitForChild("LastBut").Value = but
 		end
 
-		function AddCheckBox(Thingy, Name, On, Off)
-		local Thing
-		Thing = Frames:FindFirstChild(Thingy)
-		if Thing == nil then error("Frame not found !") return end
+		function Tab:AddCheckBox(Name, On, Off)
 		Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
@@ -464,6 +443,10 @@ Content.Parent = FrameTemplate
 					Off()
 				end
 			end)
+	
+		end
+
+		
 		end	
 	
 end
