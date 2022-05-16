@@ -448,6 +448,6 @@ function module:CreateGui (name)
 
 
 	end	
-
+return Window
 end
 return module
