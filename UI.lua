@@ -1,6 +1,6 @@
 module = {}
 -- Instances:
-function module:CreateGui (name)
+function module:CreateGui(name)
 	local Window = {}
 	local AlreadyLoaded = false
 	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
