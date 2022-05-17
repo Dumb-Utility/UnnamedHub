@@ -289,6 +289,7 @@ function module:CreateGui(name)
 		end
 
 		function Tab:AddTextBox(Name)
+			local Box = {}
 			Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
@@ -317,9 +318,17 @@ function module:CreateGui(name)
 			end
 			Thing:WaitForChild("LastBut").Value = but
 			-- print(Thing:WaitForChild("LastBut").Value)
+			function Box:GetString()
+			Thinge = Thing:WaitForChild("Content")
+			local h = Thing.Content:FindFirstChild(Button)  
+			if not h then error("Button not found !") return end
+			if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
+			return h.Text
+		end
 		end
 
 		function Tab:AddNumberBox(Name, Run)
+			local Num = {}
 			Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
@@ -358,9 +367,7 @@ function module:CreateGui(name)
 				local Number = tonumber(but.Frame.TextBox.Text)
 				Run()
 			end)
-		end
-
-		function Tab:GetNumber(Button)
+			function Num:GetNumber()
 			Thinge = Thing:WaitForChild("Content")
 			local h = Thing.Content:FindFirstChild(Button)  
 			if not h then error("Button not found !") return end
@@ -368,14 +375,8 @@ function module:CreateGui(name)
 			h = h:FindFirstChild("Frame"):FindFirstChild("TextBox")
 			return tonumber(h.Text)		
 		end
-
-		function Tab:GetString(Button)
-			Thinge = Thing:WaitForChild("Content")
-			local h = Thing.Content:FindFirstChild(Button)  
-			if not h then error("Button not found !") return end
-			if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
-			return h.Text
 		end
+
 
 		function Tab:AddSubText(Name)
 			Thinge = Thing:WaitForChild("Content")
