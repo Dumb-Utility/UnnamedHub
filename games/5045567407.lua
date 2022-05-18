@@ -3,9 +3,9 @@
 local LP = game:GetService("Players").LocalPlayer
 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UI.lua"))()
 
-gui.CreateGui()
+local Window = gui:CreateGui()
 
-AddFrame("Yes")
+local y = Window:AddFrame("Yes")
 
 function StringToRGB(text)
 local length1=string.find(text,",")
@@ -20,9 +20,9 @@ local color=num1,num2,num3
 return color
 end
 
-AddButton("Yes", "Change colors", function()
+y:AddButton("Change colors", function()
        -- print("[RGB STRING] =>", GetString("Yes", "RGB"))
-    local RGB = StringToRGB(GetString("Yes", "RGB"))
+    local RGB = StringToRGB(r:GetString())
        -- print("[RGB] =>", RGB)
     if not LP.Character:FindFirstChild("PaintBucket") then LP.Backpack.PaintBucket.Parent = LP.Character warn("Auto equipped the PaintBucket") end
 
@@ -44,16 +44,16 @@ for i, v in pairs(game:GetService("Workspace").Provinces:GetChildren()) do
   end
 end)
 
-AddTextBox("Yes", "RGB")
+local r = y:AddTextBox("RGB")
   
-AddButton("Yes", "Just that yea", function() end)
+y:AddButton("Just that yea", function() end)
 
-AddTextBox("Yes", "Player Name")
-AddTextBox("Yes", "Text")
+local p = y:AddTextBox("Player Name")
+local t = y:AddTextBox("Text")
 
-AddButton("Yes", "Change Name", function()
-local Player = string.lower(GetString("Yes", "Player Name"))
-local NewName = GetString("Yes", "Text")
+y:AddButton("Change Name", function()
+local Player = string.lower(p:GetString())
+local NewName = t:GetString()
 local ok = false
 if Player == "all" then
 		ok = true
