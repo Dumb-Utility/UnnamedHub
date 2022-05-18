@@ -1,32 +1,32 @@
 
 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UI.lua"))()
 
-gui.CreateGui()
+local Window = gui:CreateGui()
 
-AddFrame("Launcher")
-AddButton("Launcher", "Remove Cooldown", function() 
+local la = Window:AddFrame("Launcher")
+la:AddButton("Remove Cooldown", function() 
     local a = require(game:GetService("Players").LocalPlayer.Backpack.Launcher.Stats)
     a.Cooldown = 0
 end)
 
-AddNumberBox("Launcher", "Rocket Speed", function() 
+la:AddNumberBox("Rocket Speed", function() 
     local a = require(game:GetService("Players").LocalPlayer.Backpack.Launcher.Stats)
     a.RocketSpeed = GetNumber("Launcher", "Rocket Speed")
 end)
 
-AddNumberBox("Launcher", "Rockets", function() 
+la:AddNumberBox("Launcher", "Rockets", function() 
     local a = require(game:GetService("Players").LocalPlayer.Backpack.Launcher.Stats)
     a.ShotgunAmount = GetNumber("Launcher", "Rockets")
 end)
 
 
-AddFrame("Bomb")
-AddButton("Bomb", "Remove Cooldown", function() 
+local bomb = Window:AddFrame("Bomb")
+bomb:AddButton("Remove Cooldown", function() 
     local a = require(game:GetService("Players").LocalPlayer.Backpack.Bomb.Stats)
     a.Cooldown = 0
 end)
 
-AddButton("Bomb", "Mod Bomb", function() 
+bomb:AddButton("Mod Bomb", function() 
   local a = require(game:GetService("Players").LocalPlayer.Backpack.Bomb.Stats)
     a.BlastRadius = 500
     a.BlastForce = 1000
@@ -34,16 +34,16 @@ end)
 
 
 
-AddFrame("General")
+local gen = Window:AddFrame("General")
 
-AddButton("General", "Die", function()
+gen:AddButton("General", "Die", function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
     end)
 
-AddNumberBox("General", "Add Levels", function() 
+gen:AddNumberBox("General", "Add Levels", function() 
     game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Levels", 480, GetNumber("General", "Add Levels"))
 end)
 
-AddNumberBox("General", "Add Coins", function() 
+gen:AddNumberBox("General", "Add Coins", function() 
     game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", 480, GetNumber("General", "Add Coins"))
 end)
