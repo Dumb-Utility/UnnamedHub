@@ -12,29 +12,29 @@ local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Util
 
 notify("This script isn't completed yet.")
 
-gui.CreateGui()
+local Window = gui:CreateGui()
 
-AddFrame("Teams")
-AddButton("Teams", "Works outside of menu", function() end)
+local team = Window:AddFrame("Teams")
+team:AddButton("Works outside of menu", function() end)
 
-AddSubText("Teams", "Teams")
+team:AddSubText("Teams")
 
-AddButton("Teams", "Civilian", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("Civilian") LP.Character:WaitForChild("Humanoid").Health = 0 end)
+team:AddButton("Civilian", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("Civilian") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
-AddButton("Teams", "Facility Director", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("FacilityDirector") LP.Character:WaitForChild("Humanoid").Health = 0 end)
+team:AddButton("Facility Director", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("FacilityDirector") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
-AddButton("Teams", "Guard", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("SecurityGuard") LP.Character:WaitForChild("Humanoid").Health = 0 end)
+team:AddButton("Guard", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("SecurityGuard") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
-AddButton("Teams", "Medic", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("MedicalStaff") LP.Character:WaitForChild("Humanoid").Health = 0 end)
+team:AddButton("Medic", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("MedicalStaff") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
-AddButton("Teams", "Engineer Guy", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("MaintenanceCrew") LP.Character:WaitForChild("Humanoid").Health = 0 end)
+team:AddButton("Engineer Guy", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("MaintenanceCrew") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
-AddButton("Teams", "Scientist (Science team)", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("Scientist") LP.Character:WaitForChild("Humanoid").Health = 0 end)
+team:AddButton("Scientist (Science team)", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("Scientist") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
-AddButton("Teams", "MTF but with a different name", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("EmergencyResponse") LP.Character:WaitForChild("Humanoid").Health = 0 end)
+team:AddButton("MTF but with a different name", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("EmergencyResponse") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
-AddFrame("Gun")
-AddButton("Gun", "Mod Guns", function()
+local gun = Window:AddFrame("Gun")
+gun:AddButton("Mod Guns", function()
 for _,v in pairs(LP.Backpack:GetChildren()) do
   if v:IsA("Tool") and v:FindFirstChild("ToolType") then
     if v.ToolType.Value == "Gun" then	
