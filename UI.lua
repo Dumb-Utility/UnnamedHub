@@ -369,9 +369,7 @@ function module:CreateGui(name)
 				Run()
 			end)
 			function Num:GetNumber()
-			Thinge = Thing:WaitForChild("Content")
-			local h = Thing.Content:FindFirstChild(Button)  
-			if not h then error("Button not found !") return end
+			h = but
 			if not h:FindFirstChild("Frame"):FindFirstChild("TextBox") then error("The item isn't a number button !") return end
 			h = h:FindFirstChild("Frame"):FindFirstChild("TextBox")
 			return tonumber(h.Text)		
