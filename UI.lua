@@ -325,6 +325,7 @@ function module:CreateGui(name)
 			if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
 			return h.Text
 		end
+			return Box
 		end
 
 		function Tab:AddNumberBox(Name, Run)
@@ -375,6 +376,7 @@ function module:CreateGui(name)
 			h = h:FindFirstChild("Frame"):FindFirstChild("TextBox")
 			return tonumber(h.Text)		
 		end
+			return Num
 		end
 
 
