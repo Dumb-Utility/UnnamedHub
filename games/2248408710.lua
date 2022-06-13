@@ -36,14 +36,14 @@ end)
 
 local gen = Window:AddFrame("General")
 
-gen:AddButton("General", "Die", function()
+gen:AddButton("Die", function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
     end)
 
-gen:AddNumberBox("General", "Add Levels", function() 
+gen:AddNumberBox("Add Levels", function() 
     game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Levels", 480, GetNumber("General", "Add Levels"))
 end)
 
-gen:AddNumberBox("General", "Add Coins", function() 
+gen:AddNumberBox("Add Coins", function() 
     game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", 480, GetNumber("General", "Add Coins"))
 end)
