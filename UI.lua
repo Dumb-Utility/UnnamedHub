@@ -319,9 +319,7 @@ function module:CreateGui(name)
 			Thing:WaitForChild("LastBut").Value = but
 			-- print(Thing:WaitForChild("LastBut").Value)
 			function Box:GetString()
-			Thinge = Thing:WaitForChild("Content")
-			local h = Thing.Content:FindFirstChild(Button)  
-			if not h then error("Button not found !") return end
+			h = but
 			if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
 			return h.Text
 		end
