@@ -79,8 +79,6 @@ game:GetService("StarterGui"):SetCore(
 		}
 	)
 end
-    break
   end
-end
 
 if loaded == false then notify("This game isn't supported.") end
