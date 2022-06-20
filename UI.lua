@@ -3,11 +3,11 @@ module = {}
 function module:CreateGui(name)
 	local Window = {}
 	local AlreadyLoaded = false
-	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
-			AlreadyLoaded = true	
-		end
-	end
+--	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	--	if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+	--		AlreadyLoaded = true	
+--		end
+--	end
 	if AlreadyLoaded == true then return end
 	if _G.Activate == nil then _G.Activate = "rightshift" end
 	local ScreenGui = Instance.new("ScreenGui")
@@ -31,12 +31,9 @@ function module:CreateGui(name)
 	local Frames = Instance.new("Folder")
 
 	--Properties:
-	if syn and syn.protect_gui then
-		syn.protect_gui(ScreenGui)
-	end
-	
+
 	ScreenGui.Name = "ScreenGui"
-	ScreenGui.Parent = game:GetService("CoreGui")
+	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	Template.Name = "Template"
@@ -375,7 +372,7 @@ function module:CreateGui(name)
 			end
 			Thing:WaitForChild("LastBut").Value = but
 			-- print(Thing:WaitForChild("LastBut").Value)
-			local TextBox = but.Frame.TextBox
+			local TextBox = but.Open.TextBox
 			TextBox:GetPropertyChangedSignal("Text"):Connect(function()
 				TextBox.Text = TextBox.Text:gsub('%D+', '');
 			end)
@@ -383,14 +380,14 @@ function module:CreateGui(name)
 			    but.Open.TextBox.Visible = not but.Open.TextBox.Visible
 			end)
 			but.MouseButton1Click:Connect(function()
-				if but.Frame.TextBox.Text == "" then return end
+				if but.Open.TextBox.Text == "" then return end
 				local Number = tonumber(but.Open.TextBox.Text)
 				Run()
 			end)
 			function Num:GetNumber()
 				h = but.Open.TextBox
-				if not h:FindFirstChild("Frame"):FindFirstChild("TextBox") then error("The item isn't a number button !") return end
-				h = h:FindFirstChild("Frame"):FindFirstChild("TextBox")
+				if not h:FindFirstChild("Open"):FindFirstChild("TextBox") then error("The item isn't a number button !") return end
+				h = h:FindFirstChild("Open"):FindFirstChild("TextBox")
 				return tonumber(h.Text)		
 			end
 			return Num
