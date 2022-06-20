@@ -35,6 +35,7 @@ function module:CreateGui(name)
 	ScreenGui.Name = "ScreenGui"
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.ResetOnSpawn = false
 
 	Template.Name = "Template"
 	Template.Parent = ScreenGui
