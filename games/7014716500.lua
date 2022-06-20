@@ -15,6 +15,7 @@ notify("This script isn't completed yet.")
 local Window = gui:CreateGui()
 
 local team = Window:AddFrame("Teams")
+
 team:AddButton("Works outside of menu", function() end)
 
 team:AddButton("Civilian", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("Civilian") LP.Character:WaitForChild("Humanoid").Health = 0 end)
