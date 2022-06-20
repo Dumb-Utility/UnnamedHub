@@ -17,8 +17,6 @@ local Window = gui:CreateGui()
 local team = Window:AddFrame("Teams")
 team:AddButton("Works outside of menu", function() end)
 
-team:AddSubText("Teams")
-
 team:AddButton("Civilian", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("Civilian") LP.Character:WaitForChild("Humanoid").Health = 0 end)
 
 team:AddButton("Facility Director", function() game:GetService("ReplicatedStorage").RemoteEvents.UpdateTeam:FireServer("FacilityDirector") LP.Character:WaitForChild("Humanoid").Health = 0 end)
