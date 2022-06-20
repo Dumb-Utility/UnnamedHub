@@ -3,11 +3,11 @@ module = {}
 function module:CreateGui(name)
 	local Window = {}
 	local AlreadyLoaded = false
---	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-	--	if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
-	--		AlreadyLoaded = true	
---		end
---	end
+	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+			AlreadyLoaded = true	
+		end
+	end
 	if AlreadyLoaded == true then return end
 	if _G.Activate == nil then _G.Activate = "rightshift" end
 	local ScreenGui = Instance.new("ScreenGui")
@@ -31,9 +31,12 @@ function module:CreateGui(name)
 	local Frames = Instance.new("Folder")
 
 	--Properties:
-
+	if syn and syn.protect_gui then
+		syn.protect_gui(ScreenGui)
+	end
+	
 	ScreenGui.Name = "ScreenGui"
-	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	Template.Name = "Template"
