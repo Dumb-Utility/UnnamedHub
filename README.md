@@ -2,7 +2,7 @@
 
 # UnnamedHub
 
-UnnamedHub is a script hub for [roblox](https://roblox.com/) with multiple game supports.
+UnnamedHub is a script hub for [ROBLOX](https://roblox.com/) with multiple game supports.
 
 # Content
 UnnamedHub is showing itself as a "hidden" gui with the minecraft client type of gui with a button to open the gui with multiple category.
