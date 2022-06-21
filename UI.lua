@@ -391,8 +391,7 @@ function module:CreateGui(name)
 			end)
 			function Num:GetNumber()
 				h = but.Open.TextBox
-				if not h:FindFirstChild("Open"):FindFirstChild("TextBox") then error("The item isn't a number button !") return end
-				h = h:FindFirstChild("Open"):FindFirstChild("TextBox")
+				if (not h:IsA("TextBox") and #h:GetChildren() > 0) then error("The item isn't a string box !") return end
 				return tonumber(h.Text)		
 			end
 			return Num
