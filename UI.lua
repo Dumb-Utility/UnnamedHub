@@ -1,15 +1,17 @@
 module = {}
--- Instances:
 function module:CreateGui(name)
 	local Window = {}
 	local AlreadyLoaded = false
---	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-	--	if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
-	--		AlreadyLoaded = true	
---		end
---	end
+	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+			AlreadyLoaded = true	
+		end
+	end
 	if AlreadyLoaded == true then return end
 	if _G.Activate == nil then _G.Activate = "rightshift" end
+
+	--# UI Parts
+	
 	local ScreenGui = Instance.new("ScreenGui")
 	local Hide = Instance.new("Frame")
 	local Template = Instance.new("Folder")
