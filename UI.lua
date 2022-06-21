@@ -31,9 +31,11 @@ function module:CreateGui(name)
 	local Frames = Instance.new("Folder")
 
 	--Properties:
-
-	ScreenGui.Name = "ScreenGui"
-	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	if syn and syn.protect_gui then
+		syn.protect_gui(ScreenGui)
+	end
+	ScreenGui.Name = "UH"
+	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 
