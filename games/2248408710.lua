@@ -9,14 +9,14 @@ la:AddButton("Remove Cooldown", function()
     a.Cooldown = 0
 end)
 
-la:AddNumberBox("Rocket Speed", function() 
+RocketSpeed = la:AddNumberBox("Rocket Speed", function() 
     local a = require(game:GetService("Players").LocalPlayer.Backpack.Launcher.Stats)
-    a.RocketSpeed = GetNumber("Launcher", "Rocket Speed")
+    a.RocketSpeed = RocketSpeed:GetNumber()
 end)
 
-la:AddNumberBox("Launcher", "Rockets", function() 
+NumberThing = la:AddNumberBox("Launcher", "Rockets", function() 
     local a = require(game:GetService("Players").LocalPlayer.Backpack.Launcher.Stats)
-    a.ShotgunAmount = GetNumber("Launcher", "Rockets")
+    a.ShotgunAmount = NumberThing:GetNumber()
 end)
 
 
@@ -40,10 +40,10 @@ gen:AddButton("Die", function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
     end)
 
-gen:AddNumberBox("Add Levels", function() 
-    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Levels", 480, GetNumber("General", "Add Levels"))
+Levels = gen:AddNumberBox("Add Levels", function() 
+    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Levels", 480, Levels:GetNumber())
 end)
 
-gen:AddNumberBox("Add Coins", function() 
-    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", 480, GetNumber("General", "Add Coins"))
+Coins = gen:AddNumberBox("Add Coins", function() 
+    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", 480, Coins:GetNumber())
 end)
