@@ -24,7 +24,7 @@ end)
 
 sw:AddButton("Buy Next", function() game:GetService("ReplicatedStorage").Events.BuyAll:FireServer("Swords") end)
 
-local ba = AddFrame("Backpack")
+local ba = Window:AddFrame("Backpack")
 
 ba:AddButton("Die", function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
