@@ -44,7 +44,7 @@ for i, v in pairs(game:GetService("Workspace").Provinces:GetChildren()) do
   end
 end)
 
-local r = y:AddTextBox("RGB")
+r = y:AddTextBox("RGB")
   
 y:AddButton("Just that yea", function() end)
 
