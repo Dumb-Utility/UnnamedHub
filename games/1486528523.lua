@@ -100,8 +100,6 @@ CarMod = car:AddNumberBox("Mod Speed", function()
     notify("Done.")
 end)
 
-car:AddSubText("Client/Server")
-
 car:AddButton("Car ESP", function()
     CarESP = not CarESP
     print(CarESP)
