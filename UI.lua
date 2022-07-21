@@ -42,6 +42,7 @@ function module:CreateGui(name)
 	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
+	ScreenGui:SetAttribute("Loaded", true)
 
 	Template.Name = "Template"
 	Template.Parent = ScreenGui
