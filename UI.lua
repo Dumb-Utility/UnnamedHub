@@ -1,4 +1,4 @@
-local Global = getgenv or getgenv() or _G
+local Global = getgenv and getgenv() or _G
 
 module = {}
 function module:CreateGui(name)
