@@ -1,3 +1,5 @@
+local Global = getgenv or getgenv() or _G
+
 module = {}
 function module:CreateGui(name)
 	local Window = {}
@@ -8,7 +10,7 @@ function module:CreateGui(name)
 		end
 	end
 	if AlreadyLoaded == true then return end
-	if _G.Activate == nil then _G.Activate = "rightshift" end
+	if Global.Activate == nil then Global.Activate = "rightshift" end
 
 	--# UI Parts
 	
@@ -33,8 +35,8 @@ function module:CreateGui(name)
 	local Frames = Instance.new("Folder")
 
 	--Properties:
-	if syn and syn.protect_gui then
-		syn.protect_gui(ScreenGui)
+	if syn and syn.protectGlobalui then
+		syn.protectGlobalui(ScreenGui)
 	end
 	ScreenGui.Name = "UH"
 	ScreenGui.Parent = game:GetService("CoreGui")
@@ -200,7 +202,7 @@ function module:CreateGui(name)
 	CategoryText.TextSize = 16.000
 	CategoryText.TextXAlignment = Enum.TextXAlignment.Left
 
-	CategoryName.Name = "CategoryName"
+	CategoryName.Name = "ContentFrame"
 	CategoryName.Parent = FrameTemplate
 	CategoryName.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 	CategoryName.BackgroundTransparency = 0.500
@@ -224,7 +226,7 @@ function module:CreateGui(name)
 	local LastPos = 0
 	local First = 1
 	local vis = false
-	local Activate = _G.Activate
+	local Activate = Global.Activate
 	Hide.Visible = vis
 	local UserInputService = game:GetService("UserInputService")
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
