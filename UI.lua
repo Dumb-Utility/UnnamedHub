@@ -1,5 +1,4 @@
 local Global = getgenv and getgenv() or _G
-if not syn then loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisInstanceProtect.lua"))() end
 
 module = {}
 function module:CreateGui(name)
@@ -42,9 +41,7 @@ function module:CreateGui(name)
 	end
 	if synprotect then
 	      synprotect(ScreenGui)
-	else
-	      ProtectInstance(ScreenGui)	
-        end
+	end
 	
 	ScreenGui.Name = "UH"
 	ScreenGui.Parent = game:GetService("CoreGui")
