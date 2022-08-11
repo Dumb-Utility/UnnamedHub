@@ -37,7 +37,7 @@ function module:CreateGui(name)
 	--Properties:
 	local synprotect = nil
 	if syn then
-           local synprotect = syn.protect_gui 
+           synprotect = syn.protect_gui 
 	end
 	if synprotect then
 	      synprotect(ScreenGui)
