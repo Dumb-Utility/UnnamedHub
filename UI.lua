@@ -1,4 +1,5 @@
 local Global = getgenv and getgenv() or _G
+if not syn then loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisInstanceProtect.lua"))() end
 
 module = {}
 function module:CreateGui(name)
@@ -35,9 +36,16 @@ function module:CreateGui(name)
 	local Frames = Instance.new("Folder")
 
 	--Properties:
-	if syn and syn.protect_gui then
-		syn.protect_gui(ScreenGui)
+	local synprotect = nil
+	if syn then
+	local synprotect = syn.protect_gui 
 	end
+	if synprotect then
+	      synprotect(ScreenGui)
+	else
+	      ProtectInstance(ScreenGui)	
+        end
+	
 	ScreenGui.Name = "UH"
 	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
