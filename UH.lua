@@ -53,7 +53,7 @@ local games = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Ut
 for _,v in pairs(games.games) do
   if v == game.PlaceId then
     -- Syn support for others exploits.
-    loadstring(game:HttpGet("https://irisapp.ca/api/Scripts/IrisBetterCompat.lua"))()
+    -- loadstring(game:HttpGet("https://irisapp.ca/api/Scripts/IrisBetterCompat.lua"))()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/"..Version.."/games/"..tostring(game.PlaceId)..".lua"))()
 	notify("Welcome "..game:GetService("Players").LocalPlayer.Name)
         --warn("UnnamedHub loaded !")
