@@ -35,8 +35,8 @@ function module:CreateGui(name)
 	local Frames = Instance.new("Folder")
 
 	--Properties:
-	if syn and syn.protectGlobalui then
-		syn.protectGlobalui(ScreenGui)
+	if syn and syn.protect_gui then
+		syn.protect_gui(ScreenGui)
 	end
 	ScreenGui.Name = "UH"
 	ScreenGui.Parent = game:GetService("CoreGui")
