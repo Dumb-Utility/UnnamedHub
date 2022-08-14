@@ -4,19 +4,18 @@ module = {}
 function module:CreateGui(name)
 	local Window = {}
 	local AlreadyLoaded = false
-	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
-			AlreadyLoaded = true	
-		end
-	end
+	--for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	--	if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+	--		AlreadyLoaded = true	
+	--	end
+	--end
 	if AlreadyLoaded == true then return end
 	if Global.Activate == nil then Global.Activate = "rightshift" end
 
 	--# UI Parts
-	
+
 	local ScreenGui = Instance.new("ScreenGui")
 	local Hide = Instance.new("Frame")
-	local Template = Instance.new("Folder")
 	local StringBoxTemplate = Instance.new("TextButton")
 	local Open = Instance.new("TextButton")
 	local TextBox = Instance.new("TextBox")
@@ -31,47 +30,143 @@ function module:CreateGui(name)
 	local Content = Instance.new("Folder")
 	local CategoryText = Instance.new("TextLabel")
 	local CategoryName = Instance.new("Frame")
-	local Close = Instance.new("TextButton")
+	local Close = Instance.new("ImageButton")
 	local Frames = Instance.new("Folder")
+	local UICorner = Instance.new("UICorner")
+	local UICorner_2 = Instance.new("UICorner")
+	local UICorner_3 = Instance.new("UICorner")
+	local UICorner_4 = Instance.new("UICorner")
 
 	--Properties:
 	local synprotect = nil
 	if syn then
-           synprotect = syn.protect_gui 
+		synprotect = syn.protect_gui 
 	end
 	if synprotect then
-	      synprotect(ScreenGui)
+		synprotect(ScreenGui)
 	end
-	
+
 	ScreenGui.Name = "UH"
-	ScreenGui.Parent = game:GetService("CoreGui")
+	ScreenGui.Parent = game:GetService("Players").LocalPlayer.PlayerGui
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
+	ScreenGui.IgnoreGuiInset = true
 	ScreenGui:SetAttribute("Loaded", true)
-
-	Template.Name = "Template"
-	Template.Parent = ScreenGui
+	
 	Hide.Parent = ScreenGui
 	Hide.Size = UDim2.new(1,0,1,0)
 	Hide.ZIndex = 0
 	Hide.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Hide.BackgroundTransparency = 0.5
+	Hide.BackgroundTransparency = 0.7
 
-	StringBoxTemplate.Name = "StringBoxTemplate"
-	StringBoxTemplate.Parent = Template
-	StringBoxTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	StringBoxTemplate.BackgroundTransparency = 1.000
-	StringBoxTemplate.BorderSizePixel = 0
-	StringBoxTemplate.Position = UDim2.new(0.0345604606, 0, 5.23529387, 0)
-	StringBoxTemplate.Size = UDim2.new(0, 168, 0, 29)
-	StringBoxTemplate.Font = Enum.Font.Arcade
-	StringBoxTemplate.Text = "TextBox"
-	StringBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
-	StringBoxTemplate.TextSize = 18.000
-	StringBoxTemplate.TextXAlignment = Enum.TextXAlignment.Left
+
+	Frames.Name = "Frames"
+	Frames.Parent = ScreenGui
+
+	FrameTemplate.Name = "FrameTemplate"
+	FrameTemplate.BackgroundColor3 = Color3.fromRGB(255, 0, 127)
+	FrameTemplate.Position = UDim2.new(0.033036869, 0, 0.0456620641, 0)
+	FrameTemplate.Size = UDim2.new(0, 188, 0, 35)
+
+	UICorner.CornerRadius = UDim.new(0, 5)
+	UICorner.Parent = FrameTemplate
+
+	CategoryText.Name = "CategoryText"
+	CategoryText.Parent = FrameTemplate
+	CategoryText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CategoryText.BackgroundTransparency = 1.000
+	CategoryText.Size = UDim2.new(0, 158, 0, 35)
+	CategoryText.Font = Enum.Font.GothamBlack
+	CategoryText.Text = "HeaderText"
+	CategoryText.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CategoryText.TextSize = 16.000
+
+	Close.Name = "Close"
+	Close.Parent = FrameTemplate
+	Close.BackgroundTransparency = 1.000
+	Close.Position = UDim2.new(0.840425491, 0, 0.128571421, 0)
+	Close.Size = UDim2.new(0, 25, 0, 25)
+	Close.ZIndex = 2
+	Close.Image = "rbxassetid://6764432408"
+	Close.ImageRectOffset = Vector2.new(200, 550)
+	Close.ImageRectSize = Vector2.new(50, 50)
+
+	CategoryName.Name = "CategoryFrame"
+	CategoryName.Parent = FrameTemplate
+	CategoryName.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	CategoryName.BackgroundTransparency = 0.400
+	CategoryName.Position = UDim2.new(0, 0, 1, 0)
+	CategoryName.Size = UDim2.new(0, 188, 0, 333)
+
+	UICorner_2.CornerRadius = UDim.new(0, 5)
+	UICorner_2.Parent = CategoryName
+	Content.Name = "Content"
+	Content.Parent = FrameTemplate
+	--[[
+	Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Content.BackgroundTransparency = 1.000
+	Content.Position = UDim2.new(0.036316473, 0, 5, 0)
+	Content.Size = UDim2.new(0, 188, 0, 35)
+	]]--
+
+	ButtonTemplate.Name = "ButtonTemplate"
+	ButtonTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTemplate.BackgroundTransparency = 1.000
+	ButtonTemplate.BorderSizePixel = 0
+	ButtonTemplate.Position = UDim2.new(0.029, 0, 1.471, 0)
+	ButtonTemplate.Size = UDim2.new(0, 168, 0, 29)
+	ButtonTemplate.Font = Enum.Font.Jura
+	ButtonTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTemplate.TextSize = 18.000
+	ButtonTemplate.TextXAlignment = Enum.TextXAlignment.Left
+
+	CheckTemplate.Name = "CheckTemplate"
+	CheckTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CheckTemplate.BackgroundTransparency = 1.000
+	CheckTemplate.BorderSizePixel = 0
+	CheckTemplate.Position = UDim2.new(0.029, 0, 3.529, 0)
+	CheckTemplate.Size = UDim2.new(0, 168, 0, 29)
+	CheckTemplate.Font = Enum.Font.Jura
+	CheckTemplate.Text = "CheckBox"
+	CheckTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CheckTemplate.TextSize = 18.000
+	CheckTemplate.TextXAlignment = Enum.TextXAlignment.Left
+
+	CheckBox.Name = "CheckBox"
+	CheckBox.Parent = CheckTemplate
+	CheckBox.BackgroundColor3 = Color3.fromRGB(103, 103, 103)
+	CheckBox.Position = UDim2.new(0.817003667, 0, 0.146585941, 0)
+	CheckBox.Size = UDim2.new(0, 24, 0, 24)
+	CheckBox.Font = Enum.Font.SourceSans
+	CheckBox.Text = ""
+	CheckBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CheckBox.TextSize = 14.000
+
+	check.Name = "check"
+	check.Parent = CheckBox
+	check.BackgroundTransparency = 1.000
+	check.Position = UDim2.new(-0.0315256119, 0, 0, 0)
+	check.Size = UDim2.new(0, 24, 0, 24)
+	check.Visible = false
+	check.ZIndex = 2
+	check.Image = "rbxassetid://3926305904"
+	check.ImageRectOffset = Vector2.new(312, 4)
+	check.ImageRectSize = Vector2.new(24, 24)
+
+	NumberBoxTemplate.Name = "NumberBoxTemplate"
+	NumberBoxTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	NumberBoxTemplate.BackgroundTransparency = 1.000
+	NumberBoxTemplate.BorderSizePixel = 0
+	NumberBoxTemplate.Position = UDim2.new(0.035, 0, 7.118, 0)
+	NumberBoxTemplate.Size = UDim2.new(0, 168, 0, 29)
+	NumberBoxTemplate.Font = Enum.Font.Jura
+	NumberBoxTemplate.Text = "NumberBox"
+	NumberBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+	NumberBoxTemplate.TextSize = 18.000
+	NumberBoxTemplate.TextXAlignment = Enum.TextXAlignment.Left
 
 	Open.Name = "Open"
-	Open.Parent = StringBoxTemplate
+	Open.Parent = NumberBoxTemplate
 	Open.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Open.BackgroundTransparency = 1.000
 	Open.BorderColor3 = Color3.fromRGB(27, 42, 53)
@@ -85,79 +180,35 @@ function module:CreateGui(name)
 	Open.TextXAlignment = Enum.TextXAlignment.Left
 
 	TextBox.Parent = Open
-	TextBox.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	TextBox.BackgroundTransparency = 0.500
+	TextBox.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	TextBox.BackgroundTransparency = 0.400
 	TextBox.BorderColor3 = Color3.fromRGB(94, 94, 94)
-	TextBox.Position = UDim2.new(1, 0, -0.206896558, 0)
-	TextBox.Size = UDim2.new(0, 200, 0, 35)
+	TextBox.Position = UDim2.new(1.4848485, 0, 0, 0)
+	TextBox.Size = UDim2.new(0, 200, 0, 29)
 	TextBox.Visible = false
-	TextBox.Font = Enum.Font.Arcade
-	TextBox.PlaceholderText = "Insert Text Here"
+	TextBox.Font = Enum.Font.Jura
+	TextBox.PlaceholderText = "Insert Number Here"
 	TextBox.Text = ""
 	TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TextBox.TextSize = 14.000
 
-	CheckTemplate.Name = "CheckTemplate"
-	CheckTemplate.Parent = Template
-	CheckTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	CheckTemplate.BackgroundTransparency = 1.000
-	CheckTemplate.BorderSizePixel = 0
-	CheckTemplate.Position = UDim2.new(0.0288461745, 0, 3.52941179, 0)
-	CheckTemplate.Size = UDim2.new(0, 168, 0, 29)
-	CheckTemplate.Font = Enum.Font.Arcade
-	CheckTemplate.Text = "CheckBox"
-	CheckTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
-	CheckTemplate.TextSize = 18.000
-	CheckTemplate.TextXAlignment = Enum.TextXAlignment.Left
+	UICorner_3.CornerRadius = UDim.new(0, 5)
+	UICorner_3.Parent = TextBox
 
-	CheckBox.Name = "CheckBox"
-	CheckBox.Parent = CheckTemplate
-	CheckBox.BackgroundColor3 = Color3.fromRGB(103, 103, 103)
-	CheckBox.Position = UDim2.new(0.817003667, 0, 0.146585941, 0)
-	CheckBox.Size = UDim2.new(0, 24, 0, 24)
-	CheckBox.Font = Enum.Font.SourceSans
-    CheckBox.Text = ""
-    CheckBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-    CheckBox.TextSize = 14.000
-
-	check.Name = "check"
-	check.Parent = CheckBox
-	check.BackgroundTransparency = 1.000
-	check.Position = UDim2.new(-0.0315256119, 0, 0, 0)
-	check.Size = UDim2.new(0, 24, 0, 24)
-	check.Visible = false
-	check.ZIndex = 2
-	check.Image = "rbxassetid://3926305904"
-	check.ImageRectOffset = Vector2.new(312, 4)
-	check.ImageRectSize = Vector2.new(24, 24)
-
-	ButtonTemplate.Name = "ButtonTemplate"
-	ButtonTemplate.Parent = Template
-	ButtonTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ButtonTemplate.BackgroundTransparency = 1.000
-	ButtonTemplate.BorderSizePixel = 0
-	ButtonTemplate.Position = UDim2.new(0.0288461745, 0, 1.47058821, 0)
-	ButtonTemplate.Size = UDim2.new(0, 168, 0, 29)
-	ButtonTemplate.Font = Enum.Font.Arcade
-	ButtonTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
-	ButtonTemplate.TextSize = 18.000
-	ButtonTemplate.TextXAlignment = Enum.TextXAlignment.Left
-
-	NumberBoxTemplate.Name = "NumberBoxTemplate"
-	NumberBoxTemplate.Parent = Template
-	NumberBoxTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	NumberBoxTemplate.BackgroundTransparency = 1.000
-	NumberBoxTemplate.BorderSizePixel = 0
-	NumberBoxTemplate.Position = UDim2.new(0.0345604606, 0, 7.11764717, 0)
-	NumberBoxTemplate.Size = UDim2.new(0, 168, 0, 29)
-	NumberBoxTemplate.Font = Enum.Font.Arcade
-	NumberBoxTemplate.Text = "NumberBox"
-	NumberBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
-	NumberBoxTemplate.TextSize = 18.000
-	NumberBoxTemplate.TextXAlignment = Enum.TextXAlignment.Left
+	StringBoxTemplate.Name = "StringBoxTemplate"
+	StringBoxTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	StringBoxTemplate.BackgroundTransparency = 1.000
+	StringBoxTemplate.BorderSizePixel = 0
+	StringBoxTemplate.Position = UDim2.new(0.035, 0, 5.235, 0)
+	StringBoxTemplate.Size = UDim2.new(0, 168, 0, 29)
+	StringBoxTemplate.Font = Enum.Font.Jura
+	StringBoxTemplate.Text = "TextBox"
+	StringBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+	StringBoxTemplate.TextSize = 18.000
+	StringBoxTemplate.TextXAlignment = Enum.TextXAlignment.Left
 
 	Open_2.Name = "Open"
-	Open_2.Parent = NumberBoxTemplate
+	Open_2.Parent = StringBoxTemplate
 	Open_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Open_2.BackgroundTransparency = 1.000
 	Open_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
@@ -171,63 +222,20 @@ function module:CreateGui(name)
 	Open_2.TextXAlignment = Enum.TextXAlignment.Left
 
 	TextBox_2.Parent = Open_2
-	TextBox_2.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	TextBox_2.BackgroundTransparency = 0.500
+	TextBox_2.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	TextBox_2.BackgroundTransparency = 0.400
 	TextBox_2.BorderColor3 = Color3.fromRGB(94, 94, 94)
-	TextBox_2.Position = UDim2.new(1, 0, 0, 0)
-	TextBox_2.Size = UDim2.new(0, 200, 0, 29)
+	TextBox_2.Position = UDim2.new(1.63636363, 0, -0.206896558, 0)
+	TextBox_2.Size = UDim2.new(0, 200, 0, 35)
 	TextBox_2.Visible = false
-	TextBox_2.Font = Enum.Font.Arcade
-	TextBox_2.PlaceholderText = "Insert Number Here"
+	TextBox_2.Font = Enum.Font.Jura
+	TextBox_2.PlaceholderText = "Insert Text Here"
 	TextBox_2.Text = ""
 	TextBox_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TextBox_2.TextSize = 14.000
 
-	FrameTemplate.Name = "FrameTemplate"
-	FrameTemplate.Parent = Template
-	FrameTemplate.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	FrameTemplate.BackgroundTransparency = 0.500
-	FrameTemplate.BorderColor3 = Color3.fromRGB(94, 94, 94)
-	FrameTemplate.Position = UDim2.new(0.033036869, 0, 0.0456620641, 0)
-	FrameTemplate.Size = UDim2.new(0, 175, 0, 34)
-	FrameTemplate.Visible = false
-
-	Content.Name = "Content"
-	Content.Parent = FrameTemplate
-
-	CategoryText.Name = "CategoryText"
-	CategoryText.Parent = FrameTemplate
-	CategoryText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	CategoryText.BackgroundTransparency = 1.000
-	CategoryText.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	CategoryText.Position = UDim2.new(0.0288461745, 0, -0.00588226318, 0)
-	CategoryText.Size = UDim2.new(0, 169, 0, 34)
-	CategoryText.Font = Enum.Font.Arcade
-	CategoryText.Text = "CategoryName"
-	CategoryText.TextColor3 = Color3.fromRGB(255, 255, 255)
-	CategoryText.TextSize = 16.000
-	CategoryText.TextXAlignment = Enum.TextXAlignment.Left
-
-	CategoryName.Name = "ContentFrame"
-	CategoryName.Parent = FrameTemplate
-	CategoryName.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	CategoryName.BackgroundTransparency = 0.500
-	CategoryName.BorderColor3 = Color3.fromRGB(94, 94, 94)
-	CategoryName.Position = UDim2.new(-0.000617065409, 0, 0.9868384, 0)
-	CategoryName.Size = UDim2.new(0, 175, 0, 333)
-
-	Close.Name = "Close"
-	Close.Parent = FrameTemplate
-	Close.BackgroundColor3 = Color3.fromRGB(103, 103, 103)
-	Close.Position = UDim2.new(0.857142806, 0, 0.251544297, 0)
-	Close.Size = UDim2.new(0, 17, 0, 16)
-	Close.Font = Enum.Font.SourceSans
-	Close.Text = ""
-	Close.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Close.TextSize = 14.000
-
-	Frames.Name = "Frames"
-	Frames.Parent = ScreenGui
+	UICorner_4.CornerRadius = UDim.new(0, 5)
+	UICorner_4.Parent = TextBox_2
 	-- Scripts:
 	local LastPos = 0
 	local First = 1
@@ -254,7 +262,7 @@ function module:CreateGui(name)
 		Cop.Parent = Frames
 		Cop.Visible = vis
 		if First == 0 then
-			Cop.Position = UDim2.fromOffset(LastPos.X.Offset + 230, 0)
+			Cop.Position = UDim2.new(LastPos.X.Scale, LastPos.X.Offset + 230, LastPos.Y.Scale, 0)
 		else
 			First = 0
 		end
@@ -266,15 +274,14 @@ function module:CreateGui(name)
 		local e = Instance.new("ObjectValue", Cop)
 		e.Name = "LastBut"
 		Cop:WaitForChild("Close").MouseButton1Click:Connect(function()
-			if Cop:WaitForChild("CategoryFrame").Visible == true then
-				Cop:WaitForChild("Button").Rotation = 0
-			else
-				Cop:WaitForChild("Button").Rotation = 180
-			end
+			local Rot = Cop:WaitForChild("Close").Rotation + 180
+			
+			Cop:WaitForChild("Close").Rotation = Rot
+			
 			for _,v in pairs(Cop:WaitForChild("Content"):GetChildren()) do
-				v.Visible = not Cop:WaitForChild("ContentFrame").Visible
+				v.Visible = not Cop:WaitForChild("CategoryFrame").Visible
 			end
-			Cop:WaitForChild("ContentFrame").Visible = not Cop:WaitForChild("ContentFrame").Visible
+			Cop:WaitForChild("CategoryFrame").Visible = not Cop:WaitForChild("CategoryFrame").Visible
 		end)
 		Cop.Active = true
 		Cop.Draggable = true
@@ -345,7 +352,7 @@ function module:CreateGui(name)
 			Thing:WaitForChild("LastBut").Value = but
 			-- print(Thing:WaitForChild("LastBut").Value)
 			but.Open.MouseButton1Click:Connect(function()
-			    but.Open.TextBox.Visible = not but.Open.TextBox.Visible
+				but.Open.TextBox.Visible = not but.Open.TextBox.Visible
 			end)
 			function Box:GetString()
 				h = but.Open.TextBox
@@ -390,7 +397,7 @@ function module:CreateGui(name)
 				TextBox.Text = TextBox.Text:gsub('%D+', '');
 			end)
 			but.Open.MouseButton1Click:Connect(function()
-			    but.Open.TextBox.Visible = not but.Open.TextBox.Visible
+				but.Open.TextBox.Visible = not but.Open.TextBox.Visible
 			end)
 			but.MouseButton1Click:Connect(function()
 				if but.Open.TextBox.Text == "" then return end
