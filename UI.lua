@@ -4,11 +4,11 @@ module = {}
 function module:CreateGui(name)
 	local Window = {}
 	local AlreadyLoaded = false
-	--for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-	--	if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
-	--		AlreadyLoaded = true	
-	--	end
-	--end
+	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+			AlreadyLoaded = true	
+		end
+	end
 	if AlreadyLoaded == true then return end
 	if Global.Activate == nil then Global.Activate = "rightshift" end
 
@@ -47,7 +47,7 @@ function module:CreateGui(name)
 	end
 
 	ScreenGui.Name = "UH"
-	ScreenGui.Parent = game:GetService("Players").LocalPlayer.PlayerGui
+	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
