@@ -46,6 +46,7 @@ function module:CreateGui(name)
 		synprotect(ScreenGui)
 	end
 
+	Global.__UI = ScreenGui
 	ScreenGui.Name = "UH"
 	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
