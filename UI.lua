@@ -46,13 +46,13 @@ function module:CreateGui(name)
 		synprotect(ScreenGui)
 	end
 
-	Global.__UI = ScreenGui
 	ScreenGui.Name = "UH"
 	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
 	ScreenGui:SetAttribute("Loaded", true)
+	Global.__UI = ScreenGui
 	
 	Hide.Parent = ScreenGui
 	Hide.Size = UDim2.new(1,0,1,0)
