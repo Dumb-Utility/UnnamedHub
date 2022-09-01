@@ -4,8 +4,6 @@ local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Util
 
 local Window = gui:CreateGui()
 
---notify("Press Right Shift to show the ui")
-
 local use = game:GetService("RunService").Stepped:Connect(function()   end)
 local use2 = game:GetService("RunService").Stepped:Connect(function()   end)
 
