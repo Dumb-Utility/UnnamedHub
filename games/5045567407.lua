@@ -1,6 +1,14 @@
 -- https://www.roblox.com/games/5045567407/Nations-Roleplay
 
 local LP = game:GetService("Players").LocalPlayer
+
+function notify(Message)
+	game:GetService("StarterGui"):SetCore("SendNotification", { 
+		Title = "UnnamedHub";
+		Text = Message;
+		Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+end
+
 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UI.lua"))()
 
 local Window = gui:CreateGui()
@@ -8,21 +16,18 @@ local Window = gui:CreateGui()
 local y = Window:AddFrame("Yes")
 
 function StringToRGB(text)
-local length1=string.find(text,",")
-length1=length1-1
-local num1=string.sub(text,1,length1)
-local length2=string.find(text,",",length1+2)
-length2=length2-1
-local num2=string.sub(text,length1+2,length2)
-local num3=string.sub(text,length2+2,string.len(text))
-local color=num1,num2,num3
-    -- print("[StringToRGB] =>", color)
-return color
+local color = text:split(",", "")
+if not #color == 3 then return nil end
+local RG1 = color[1]
+local RG2 = color[2]
+local RG3 = color[3]
+return Color3.fromRGB(RG1, RG2, RG3)
 end
 
 y:AddButton("Change colors", function()
        -- print("[RGB STRING] =>", GetString("Yes", "RGB"))
     local RGB = StringToRGB(r:GetString())
+    if RGB == nil then notify("Format must be RGB value") return end
        -- print("[RGB] =>", RGB)
     if not LP.Character:FindFirstChild("PaintBucket") then LP.Backpack.PaintBucket.Parent = LP.Character warn("Auto equipped the PaintBucket") end
 
@@ -32,7 +37,7 @@ for i, v in pairs(game:GetService("Workspace").Provinces:GetChildren()) do
        [1] = "PaintPart",
        [2] = {
            ["Part"] = v,
-           ["Color"] = Color3.fromRGB(RGB)
+           ["Color"] = RGB
        }
    }
    
@@ -46,7 +51,7 @@ end)
 
 r = y:AddTextBox("RGB")
   
-y:AddButton("Just that yea", function() end)
+y:AddButton(" ", function() end)
 
 local p = y:AddTextBox("Player Name")
 local t = y:AddTextBox("Text")
