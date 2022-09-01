@@ -2,7 +2,7 @@
 
 function notify(Message)
 	game:GetService("StarterGui"):SetCore("SendNotification", { 
-		Title = "UnnamedHub Beta";
+		Title = "UnnamedHub";
 		Text = Message;
 		Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
 end
@@ -10,7 +10,7 @@ end
 local LP = game:GetService("Players").LocalPlayer
 local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UI.lua"))()
 
-notify("This script isn't completed yet.")
+notify("Don't expect a lot game is really laggy")
 
 local Window = gui:CreateGui()
 
