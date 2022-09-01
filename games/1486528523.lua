@@ -17,7 +17,7 @@ local api = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Erro
 
 function notify(Message)
 	game:GetService("StarterGui"):SetCore("SendNotification", { 
-		Title = "UnnamedHub Beta";
+		Title = "UnnamedHub";
 		Text = Message;
 		Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
 end
@@ -36,16 +36,16 @@ function Click()
     local a = touch
     local found = false
     repeat 
-        if a.Parent == game:GetService("Workspace") then error("no car found") return end
+        if a.Parent == game:GetService("Workspace") then return end
         if a:FindFirstChild("DriveSeat") and a:FindFirstChild("A-Chassis Tune") then vehicule = a
             found = true
         else
             a = a.Parent
         end
     until found == true
-    if not vehicule then error("no car") return end
+    if not vehicule then return end
     seat = vehicule:FindFirstChild("DriveSeat") 
-    if seat.Occupant ~= nil then error("seat not avaiable") return end
+    if seat.Occupant ~= nil then return end
       if seat.Occupant == nil then
         currentSteal = vehicule
         stealing = true
@@ -140,6 +140,7 @@ plr:AddButton("Spectate", function()
     for _, australia in pairs(game:GetService("Players"):GetPlayers()) do
 		if string.sub(string.lower(australia.Name), 0, string.len(Player)) == string.lower(Player) then
             Camera.CameraSubject = australia.Character
+		notify("Spectating...")
             hi = true
 		end
 	end
@@ -162,8 +163,6 @@ mt.__namecall = newcclosure(function(self, ...)
     local method = getnamecallmethod()
     if method == "FireServer" then
         if self.Name == "SpawnCar" then
-            print(CanPaint)
-            print(CarLocked)
             if CarLocked == false then
                 if args[1] ~= "SpawnCar" and args[1] ~= "Selected" then args[1] = "SpawnCar" end
             end
