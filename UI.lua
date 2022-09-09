@@ -63,6 +63,7 @@ function module:CreateGui(name)
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
 	ScreenGui:SetAttribute("Loaded", true)
+	Global.__UI = ScreenGui
 	
 	Hide.Parent = ScreenGui
 	Hide.Size = UDim2.new(1,0,1,0)
