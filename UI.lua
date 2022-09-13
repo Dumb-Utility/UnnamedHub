@@ -52,7 +52,7 @@ function module:CreateGui(name)
 	if (syn and syn.protect_gui) then
 		synprotect = syn.protect_gui 
 	end
-	if synprotect and not gethui() then
+	if synprotect and not gethui then
 		synprotect(ScreenGui)
         end
 	if gethui then
