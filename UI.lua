@@ -4,11 +4,11 @@ module = {}
 function module:CreateGui(name)
 	local Window = {}
 	local AlreadyLoaded = false
-	--for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-	--	if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
-	--		AlreadyLoaded = true	
-	--	end
-	--end
+	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
+			AlreadyLoaded = true	
+		end
+	end
 	if AlreadyLoaded == true then return end
 	if Global.Activate == nil then Global.Activate = "rightshift" end
 
@@ -47,18 +47,20 @@ function module:CreateGui(name)
 	local TextLabel = Instance.new("TextLabel")
 
 	--Properties:
+	local Par = game:GetService("CoreGui")
 	local synprotect = nil
-	if syn then
+	if (syn and syn.protect_gui) then
 		synprotect = syn.protect_gui 
 	end
-	if synprotect then
+	if synprotect and not gethui() then
 		synprotect(ScreenGui)
-    elseif gethui then
-        ScreenGui.Parent = gethui()
-    end
+        end
+	if gethui then
+            Par = gethui()
+        end
 
 	ScreenGui.Name = "UH"
-	ScreenGui.Parent = game:GetService("Players").LocalPlayer.PlayerGui
+	ScreenGui.Parent = Par
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
@@ -345,7 +347,7 @@ function module:CreateGui(name)
 		end
 		LastPos = Cop.Position
 		if Size ~= nil then
-			Cop.Size = UDim2.fromOffset(Cop.Size.X.Offset, Size)
+			Cop:WaitForChild("CategoryFrame").Size = UDim2.fromOffset(Cop:WaitForChild("CategoryFrame").Size.X.Offset, Size)
 		end
 		Cop:SetAttribute("First", 0)
 		local e = Instance.new("ObjectValue", Cop)
