@@ -1,5 +1,27 @@
 local Global = getgenv and getgenv() or _G
 
+function TableRemove(tab: table, arg: any)
+	--print("remove", tab)
+    for n,v in pairs(tab) do
+        if v == arg then
+			--print("removed", v)
+			table.remove(tab, n)
+		end
+    end
+	return tab
+end
+
+function TableAdd(tab: table, arg: any, pos: number?)
+	--print("add", tab)
+	if pos then
+		table.insert(tab, arg, pos)
+	else
+	--print("ok for", arg)
+    table.insert(tab, arg)
+	end
+	return tab
+end
+
 module = {}
 function module:CreateGui(name)
 	local Window = {}
@@ -45,6 +67,10 @@ function module:CreateGui(name)
 	local DropButton = Instance.new("TextButton")
 	local UICorner_6 = Instance.new("UICorner")
 	local TextLabel = Instance.new("TextLabel")
+	local DropCheck = Instance.new("TextButton")
+    local Check = Instance.new("ImageButton")
+    local CheckCorner = Instance.new("UICorner")
+    local CheckCorner1 = Instance.new("UICorner")
 
 	--Properties:
 	local Par = game:GetService("CoreGui")
@@ -314,6 +340,32 @@ function module:CreateGui(name)
 	TextLabel.TextSize = 12.000
 
 	UICorner_6.Parent = DropButton
+
+	DropCheck.Name = "CheckBox"
+	DropCheck.Visible = false
+	DropCheck.Parent = DropButton
+	DropCheck.BackgroundColor3 = Color3.fromRGB(103, 103, 103)
+	DropCheck.Position = UDim2.new(0.817003667, 0, 0.146585941, 0)
+	DropCheck.Size = UDim2.new(0, 20, 0, 20)
+	DropCheck.Font = Enum.Font.SourceSans
+	DropCheck.Text = ""
+	DropCheck.TextColor3 = Color3.fromRGB(0, 0, 0)
+	DropCheck.TextSize = 14.000
+
+    Check.Name = "check"
+	Check.Parent = DropCheck
+	Check.BackgroundTransparency = 1.000
+	Check.Position = UDim2.new(-0.0315256119, 0, 0, 0)
+	Check.Size = UDim2.new(0, 23, 0, 23)
+	Check.Visible = false
+	Check.ZIndex = 2
+	Check.Image = "rbxassetid://3926305904"
+	Check.ImageRectOffset = Vector2.new(312, 4)
+	Check.ImageRectSize = Vector2.new(24, 24)
+
+    CheckCorner.Parent = DropCheck
+
+	CheckCorner1.Parent = Check
 	
 	-- Scripts:
 	local LastPos = 0
@@ -539,13 +591,16 @@ function module:CreateGui(name)
 
 		end
 		
-		function Tab:AddDropBox(Name, callback)
-			local Box = {}
+		function Tab:AddDropBox(Name, callback, Check)
+			local Box = {};
 			callback = callback or function() end
+		    if not type(Check) == "boolean" then Check = false end
 			Thinge = Thing:WaitForChild("Content")
 			local FirstBut = Thing:GetAttribute("First")
 			local LastBut = Thing:WaitForChild("LastBut").Value
 			local but = DropBoxTemplate:Clone()
+			local CurElement
+			if Check == true then CurElement = {} end
 			but.Parent = Thinge
 			but.Name = Name
 			but.Text = Name
@@ -570,13 +625,12 @@ function module:CreateGui(name)
 			end
 			Thing:WaitForChild("LastBut").Value = but
 			-- print(Thing:WaitForChild("LastBut").Value)
-			local CurElement = nil
 			
 			local function Update(New)
 				local TextLab = but.Open.TextLabel
 				local Old     = TextLab.Text
-				if New == Old then
-					TextLabel.Text = "None"
+				if New == Old and Check == false then
+					TextLab.Text = "None"
 					CurElement     = nil
 					return
 				end
@@ -611,12 +665,39 @@ function module:CreateGui(name)
 				if but.DropFrame.Scrolling:FindFirstChild(Name) then
 					NewEl.Name = Name.."_"..tostring(SizeOf(Name, but.DropFrame.Scrolling)+1)
 				end
+				if Check then
+					NewEl.CheckBox.Visible = true
+				end
 				NewEl.Text = NewEl.Name
 				NewEl.Parent = but.DropFrame.Scrolling
 				NewEl.MouseButton1Click:Connect(function()
+					if Check == false then
 					if but.Open.TextLabel.Text == NewEl.Text then return end
+					end
 					Update(NewEl.Name)
+					if Check then
+						local fix
+						NewEl.CheckBox.check.Visible = not NewEl.CheckBox.check.Visible
+				        local activ = NewEl.CheckBox.check.Visible
+						--print(activ)
+						if activ == true then
+							fix = TableAdd
+						else
+							fix = TableRemove
+						end
+                      if typeof(Value) == "table" then
+						 for _,ok in pairs(Value) do
+							CurElement = fix(CurElement, ok)
+						 end
+						else
+							--print(CurElement)
+							CurElement = fix(CurElement, Value)
+							--print("debuggg", CurElement)
+						end
+						--print("new", CurElement)
+					else
 					CurElement = Value
+					end
 					callback(CurElement)
 				end)
 			end
@@ -637,4 +718,5 @@ function module:CreateGui(name)
 	
 	return Window
 end
+
 return module
