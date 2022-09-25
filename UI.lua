@@ -135,6 +135,7 @@ function module:CreateGui(name: string)
 	Hide.BackgroundTransparency = 0.7
 
     NotifScroll.Parent = ScreenGui
+	NotifScroll.ScrollingEnabled = false
 	NotifScroll.Name = "NotifScroll"
 	NotifScroll.BackgroundColor3 = Color3.new(0.188235, 0.188235, 0.188235)
 	NotifScroll.BackgroundTransparency = 1
