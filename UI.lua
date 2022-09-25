@@ -136,6 +136,7 @@ function module:CreateGui(name: string)
 
     NotifScroll.Parent = ScreenGui
 	NotifScroll.Name = "NotifScroll"
+	NotifScroll.ScrollingEnabled = false
 	NotifScroll.BackgroundColor3 = Color3.new(0.188235, 0.188235, 0.188235)
 	NotifScroll.BackgroundTransparency = 1
 	NotifScroll.Position = UDim2.new(0.5,0,0,0)
