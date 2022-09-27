@@ -988,18 +988,4 @@ function module:CreateGui(name: string)
 	return Window
 end
 
--- return module
-local u = module
-local h = u:CreateGui()
-h:Notify({
-	["Time"] = 5,
-	["Title"] = "ato",
-	["Message"] = "elo ato",
-	["Color"]  = Color3.new(1, 0, 1)
-})
-h:Notify({
-	["Time"] = 10,
-	["Title"] = "ok",
-	["Message"] = "dick",
-	["Color"]  = Color3.new(1, 0, 0)
-})
+return module
