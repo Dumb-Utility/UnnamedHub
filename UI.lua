@@ -895,7 +895,7 @@ function module:CreateGui(name: string)
 			Thing:WaitForChild("LastBut").Value = but
 			-- print(Thing:WaitForChild("LastBut").Value)
 			local Pages = but.scrolling
-			local layout = Pages:FindFirstAncestorWhichIsA("UIListLayout")
+			local layout = Pages:FindFirstChildWhichIsA("UIListLayout")
 			Pages.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y)
                         layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
                               Pages.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y)
