@@ -11,7 +11,7 @@ local FSettingTemplate = {
 local NSettingTemplate = {
 	["Title"]   = "No Title",
 	["Message"] = "No Message",
-	["Color"]   = Color3.new(0.329411, 0.329411, 0.329411),
+	["Color"]   = Color3.new(255, 255, 0),
 	["Time"]    = 5
 }
 
@@ -107,15 +107,11 @@ function module:CreateGui(name: string)
 	local CheckCorner = Instance.new("UICorner")
 	local CheckCorner1 = Instance.new("UICorner")
 
+	local NotifStroke = Instance.new("UIStroke")
+    local NotifT = Instance.new("TextLabel")
+    local NotifC = Instance.new("TextLabel")
 	local NotifScroll = Instance.new("ScrollingFrame")
-	local UICorner1  = Instance.new("UICorner")
 	local NotifLayout = Instance.new("UIListLayout")
-	local Notification = Instance.new("Frame")
-	local Text1 = Instance.new("TextLabel")
-	local UIStroke = Instance.new("UIStroke")
-	local UIStroke_1 = Instance.new("UIStroke")
-	local Text2 = Instance.new("TextLabel")
-	local Frame = Instance.new("Frame")
 	local Main = Instance.new("Frame")
     -- local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
     local UIAspectRatioConstraint_1 = Instance.new("UIAspectRatioConstraint")
@@ -123,13 +119,6 @@ function module:CreateGui(name: string)
     local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint") 
 	local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
 	local easport = Instance.new("Frame")
-    local dacorner = Instance.new("UICorner")
-    local dastroke = Instance.new("UIStroke")
-    local easport1 = Instance.new("Frame")
-    local dacorner1 = Instance.new("UICorner")
-	local UICornerr = Instance.new("UICorner")
-	local dacorner1_1 = Instance.new("UICorner")
-	local eaholder = Instance.new("Frame")
 
 
 	--Properties:
@@ -147,7 +136,7 @@ function module:CreateGui(name: string)
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
 	ScreenGui:SetAttribute("Loaded", true)
-	Global.__UI = ScreenGui
+	Global.__UH__UI = ScreenGui
 
 	Hide.Parent = ScreenGui
 	Hide.Size = UDim2.new(1,0,1,0)
@@ -171,115 +160,61 @@ function module:CreateGui(name: string)
 	NotifLayout.Parent = NotifScroll
 	NotifLayout.Name = "NotifLayout"
 	NotifLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-	NotifLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
-	NotifLayout.Padding = UDim.new(0, 14)
-
+	NotifLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+	NotifLayout.Padding = UDim.new(0, 18)
 
 	easport.Name = "easport"
-	easport.BackgroundColor3 = Color3.new(0.141176, 0.141176, 0.141176)
-	easport.BackgroundTransparency = 0.10000000149011612
-	easport.Position = UDim2.new(0.4148573875427246,0,0.24292844533920288,0)
-	easport.Size = UDim2.new(0.4387029707431793,0,0.2795340120792389,0)
+	easport.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	easport.BorderColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	easport.BorderSizePixel = 7
+	easport.Position = UDim2.new(0.46882307529449463,0,0.3422550559043884,0)
+	easport.Size = UDim2.new(0.3888256847858429,0,0.1695294827222824,0)
 	
-	dacorner.Parent = easport
-	dacorner.Name = "dacorner"
+	NotifStroke.Parent = easport
+	NotifStroke.Name = "UIStroke"
+	NotifStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	NotifStroke.Color = Color3.new(0.490196, 0.490196, 0.490196)
+	NotifStroke.LineJoinMode = Enum.LineJoinMode.Bevel
+	NotifStroke.Thickness = 5
 	
-	dastroke.Parent = easport
-	dastroke.Name = "dastroke"
-	dastroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	NotifT.Parent = easport
+	NotifT.Name = "NotifT"
+	NotifT.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	NotifT.BackgroundTransparency = 1
+	NotifT.Position = UDim2.new(0,0,0,0)
+	NotifT.Size = UDim2.new(0,474,0,30)
+	NotifT.Font = Enum.Font.Arcade
+	NotifT.Text = [[NotifTitle]]
+	NotifT.TextColor3 = Color3.new(1, 1, 1)
+	NotifT.TextSize = 20
+	NotifT.TextXAlignment = Enum.TextXAlignment.Center
 	
-	Notification.Parent = easport
-	Notification.Name = "Notification"
-	Notification.BackgroundColor3 = Color3.new(0.0980392, 1, 0)
-	Notification.BackgroundTransparency = 0.30000001192092896
-	Notification.Position = UDim2.new(0.07617340981960297,0,0.20732682943344116,0)
-	Notification.Size = UDim2.new(0.8446791172027588,0,0.5896381735801697,0)
-	Notification.ZIndex = 2
-	
-	UICornerr.Parent = Notification
-	UICornerr.Name = "UICornerr"
-	
-	UIStroke.Parent = Notification
-	UIStroke.Name = "UIStroke"
-	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	
-	Text2.Parent = Notification
-	Text2.Name = "Text2"
-	Text2.BackgroundColor3 = Color3.new(1, 1, 1)
-	Text2.BackgroundTransparency = 1
-	Text2.Position = UDim2.new(6.572592070597238e-08,0,0.006402961444109678,0)
-	Text2.Size = UDim2.new(0.9999999403953552,0,0.9980120658874512,0)
-	Text2.Font = Enum.Font.GothamBold
-	Text2.Text = [[TextHere]]
-	Text2.TextColor3 = Color3.new(0, 0, 0)
-	Text2.TextSize = 14
-	Text2.TextWrapped = true
-	
-	Main.Parent = easport
-	Main.Name = "Main"
-	Main.BackgroundColor3 = Color3.new(0.0980392, 1, 0)
-	Main.BackgroundTransparency = 0.10000000149011612
-	Main.Position = UDim2.new(0,0,-0.0578669011592865,0)
-	Main.Size = UDim2.new(0.9998989701271057,0,0.21492166817188263,0)
-	Main.ZIndex = 0
-	
-	UICorner1.Parent = Main
-	UICorner1.Name = "UICorner1"
-	
-	UIStroke_1.Parent = Main
-	UIStroke_1.Name = "UIStroke"
-	UIStroke_1.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	
-	Text1.Parent = Main
-	Text1.Name = "Text1"
-	Text1.BackgroundColor3 = Color3.new(1, 1, 1)
-	Text1.BackgroundTransparency = 1
-	Text1.Position = UDim2.new(-0.001453479751944542,0,-0.0074024200439453125,0)
-	Text1.Size = UDim2.new(1.0014535188674927,0,0.9853704571723938,0)
-	Text1.Font = Enum.Font.GothamMedium
-	Text1.Text = [[TextHere]]
-	Text1.TextColor3 = Color3.new(0, 0, 0)
-	Text1.TextSize = 16
-	Text1.TextWrapped = true
-	
-	easport1.Parent = easport
-	easport1.Name = "easport1"
-	easport1.BackgroundColor3 = Color3.new(1, 0, 0)
-	easport1.Position = UDim2.new(0.0820864588022232,0,0.8744050860404968,0)
-	easport1.Size = UDim2.new(0,284,0,11)
-	easport1.ZIndex = 2
-	
-	dacorner1.Parent = easport1
-	dacorner1.Name = "dacorner1"
-	
-	eaholder.Parent = easport
-	eaholder.Name = "eaholder"
-	eaholder.BackgroundColor3 = Color3.new(0.113725, 0.113725, 0.113725)
-	eaholder.Position = UDim2.new(0.04956517368555069,0,0.8373491168022156,0)
-	eaholder.Size = UDim2.new(0,302,0,25)
-	eaholder.ZIndex = -1
-	
-	dacorner1_1.Parent = eaholder
-	dacorner1_1.Name = "dacorner1"
+	NotifC.Parent = easport
+	NotifC.Name = "NotifC"
+	NotifC.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	NotifC.BackgroundTransparency = 1
+	NotifC.Position = UDim2.new(0,0,0.298,0)
+	NotifC.Size = UDim2.new(0,474,0,70)
+	NotifC.Font = Enum.Font.Arcade
+	NotifC.Text = [[NotifContent]]
+	NotifC.TextColor3 = Color3.new(1, 1, 1)
+	NotifC.TextSize = 20
+	NotifC.TextXAlignment = Enum.TextXAlignment.Center
 
-	UIAspectRatioConstraint_1.Parent = Main
-    UIAspectRatioConstraint_1.Name = "UIAspectRatioConstraint"
-    UIAspectRatioConstraint_1.AspectRatio = 9.36681079864502
-    UIAspectRatioConstraint_1.AspectType = Enum.AspectType.ScaleWithParentSize
+	-- UIAspectRatioConstraint_1.Parent = ImageLabel
+	-- UIAspectRatioConstraint_1.AspectRatio = 1
 
-    UIAspectRatioConstraint_2.Parent = easport1
-    UIAspectRatioConstraint_2.Name = "UIAspectRatioConstraint"
-    UIAspectRatioConstraint_2.AspectRatio = 25.81818199157715
-    UIAspectRatioConstraint_2.AspectType = Enum.AspectType.ScaleWithParentSize
+	UIAspectRatioConstraint_2.Parent = NotifT
+	UIAspectRatioConstraint_2.AspectRatio = 13.233
+	UIAspectRatioConstraint_2.AspectType = Enum.AspectType.ScaleWithParentSize
 
-    UIAspectRatioConstraint_3.Parent = eaholder
-    UIAspectRatioConstraint_3.Name = "UIAspectRatioConstraint"
-    UIAspectRatioConstraint_3.AspectRatio = 12.079999923706055
-    UIAspectRatioConstraint_3.AspectType = Enum.AspectType.ScaleWithParentSize
+	UIAspectRatioConstraint_3.Parent = NotifC
+	UIAspectRatioConstraint_3.AspectRatio = 5.671
+	UIAspectRatioConstraint_3.AspectType = Enum.AspectType.ScaleWithParentSize
 
     UIAspectRatioConstraint_4.Parent = easport
     UIAspectRatioConstraint_4.Name = "UIAspectRatioConstraint"
-    UIAspectRatioConstraint_4.AspectRatio = 2.013334035873413
+    UIAspectRatioConstraint_4.AspectRatio = 4.722
     UIAspectRatioConstraint_4.AspectType = Enum.AspectType.ScaleWithParentSize
 
 	Frames.Name = "Frames"
@@ -572,17 +507,16 @@ function module:CreateGui(name: string)
 		if type(Settings) ~= "table" then
 			Settings = table.clone(NSettingTemplate)
 		end
-		for _,v in pairs(Settings) do
-			if not TableFind(NSettingTemplate, v) then
-				table.insert(Settings, NSettingTemplate[v])
+		for n,v in pairs(Settings) do
+			if not TableFind(NSettingTemplate, n) then
+				table.insert(Settings, NSettingTemplate[n])
 			end
 		end
 		local no = {}
 		local n = easport:Clone()
 		n.Parent = NotifScroll
 			n.BackgroundTransparency = 1
-			n.Main.BackgroundColor3 = Settings["Color"]
-			n.Notification.BackgroundColor3 = Settings["Color"]
+			n.NotifT.TextColor3 = Settings["Color"]
 			for _,v in pairs(n:GetDescendants()) do
 				if v:IsA("GuiObject") and v.BackgroundTransparency == 0 then
 					v.BackgroundTransparency = 1
@@ -611,15 +545,8 @@ function module:CreateGui(name: string)
 					continue
 				end
 			end
-		n.easport1.Size = UDim2.fromOffset(0, 13)
-		n.Main.Text1.Text = Settings["Title"]
-		n.Notification.Text2.Text = Settings["Message"]
-		n.easport1:TweenSize(UDim2.fromOffset(279, 13),
-			Enum.EasingDirection.In,    -- easingDirection (default Out)
-			Enum.EasingStyle.Sine,      -- easingStyle (default Quad)
-			Settings["Time"],           -- time (default: 1)
-			true                        -- should this tween override ones in-progress? (default: false)
-		)
+		n.NotifT.Text = Settings["Title"]
+		n.NotifC.Text = Settings["Message"]
 		wait(Settings["Time"])
 			local goal = {}
 			goal.BackgroundTransparency = 1
@@ -993,5 +920,6 @@ function module:CreateGui(name: string)
 
 	return Window
 end
+
 
 return module
