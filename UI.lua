@@ -11,6 +11,7 @@ local FSettingTemplate = {
 local NSettingTemplate = {
 	["Title"]   = "No Title",
 	["Message"] = "No Message",
+	["Color"]   = Color3.new(255, 255, 0),
 	["Time"]    = 5
 }
 
@@ -45,19 +46,28 @@ function TableAdd(tab: table, arg: any, pos: number?)
 	return tab
 end
 
+-- Module initialisation
 module = {}
 
-
+-- Module Function
 function module:CreateGui(name: string)
 	local Window = {}
 	local AlreadyLoaded = false
-	for _,v in pairs(game:GetService("CoreGui"):GetChildren()) do
-		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then
-			AlreadyLoaded = true	
-		end
+
+	local Par = game:GetService("CoreGui")
+	if gethui then
+		Par = gethui()
 	end
-	if AlreadyLoaded == true then return end
-	if Global.Activate == nil then Global.Activate = "rightshift" end
+
+	for _,v in pairs(Par:GetChildren()) do
+		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then AlreadyLoaded = true	end
+	end
+	if Global.__UH__UI or Global.__UH__IsLoaded then AlreadyLoaded = true end
+--	if AlreadyLoaded == true then return end
+	if Global.__UH__Activate == nil then Global.__UH__Activate = "rightshift" end
+
+	-- # Globals Initialisation
+	Global.__UH__IsLoaded = true
 
 	--# UI Parts
 
@@ -96,28 +106,28 @@ function module:CreateGui(name: string)
 	local Check = Instance.new("ImageButton")
 	local CheckCorner = Instance.new("UICorner")
 	local CheckCorner1 = Instance.new("UICorner")
+
+	local NotifStroke = Instance.new("UIStroke")
+    local NotifT = Instance.new("TextLabel")
+    local NotifC = Instance.new("TextLabel")
 	local NotifScroll = Instance.new("ScrollingFrame")
 	local NotifLayout = Instance.new("UIListLayout")
-	local Notification = Instance.new("Frame")
-	local Text1 = Instance.new("TextLabel")
-	local Cut = Instance.new("Frame")
-	local UIGradient = Instance.new("UIGradient")
-	local UIStroke = Instance.new("UIStroke")
-	local Text2 = Instance.new("TextLabel")
-	local Frame = Instance.new("Frame")
+	local Main = Instance.new("Frame")
+    -- local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+    local UIAspectRatioConstraint_1 = Instance.new("UIAspectRatioConstraint")
+	local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+    local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint") 
+	local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
+	local easport = Instance.new("Frame")
 
 
 	--Properties:
-	local Par = game:GetService("CoreGui")
 	local synprotect = nil
 	if (syn and syn.protect_gui) then
 		synprotect = syn.protect_gui 
 	end
 	if synprotect and not gethui then
 		synprotect(ScreenGui)
-	end
-	if gethui then
-		Par = gethui()
 	end
 
 	ScreenGui.Name = "UH"
@@ -126,7 +136,7 @@ function module:CreateGui(name: string)
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
 	ScreenGui:SetAttribute("Loaded", true)
-	Global.__UI = ScreenGui
+	Global.__UH__UI = ScreenGui
 
 	Hide.Parent = ScreenGui
 	Hide.Size = UDim2.new(1,0,1,0)
@@ -135,78 +145,80 @@ function module:CreateGui(name: string)
 	Hide.BackgroundTransparency = 0.7
 
     NotifScroll.Parent = ScreenGui
-	NotifScroll.ScrollingEnabled = false
 	NotifScroll.Name = "NotifScroll"
+	NotifScroll.ClipsDescendants = false
 	NotifScroll.BackgroundColor3 = Color3.new(0.188235, 0.188235, 0.188235)
 	NotifScroll.BackgroundTransparency = 1
-	NotifScroll.Position = UDim2.new(0.5,0,0,0)
+	NotifScroll.Position = UDim2.new(0.5,-5,0,15)
 	NotifScroll.Selectable = false
 	NotifScroll.Size = UDim2.new(0.5,0,1,0)
 	NotifScroll.CanvasSize = UDim2.new(0,0,1,0)
 	NotifScroll.ScrollBarImageColor3 = Color3.new(0, 0, 0)
 	NotifScroll.ScrollBarImageTransparency = 1
 	NotifScroll.ScrollBarThickness = 0
+	NotifScroll.ScrollingEnabled = false
 
 	NotifLayout.Parent = NotifScroll
 	NotifLayout.Name = "NotifLayout"
 	NotifLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-	NotifLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
-	NotifLayout.Padding = UDim.new(0, 10)
+	NotifLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+	NotifLayout.Padding = UDim.new(0, 18)
 
-	Notification.Name = "Notification"
-	Notification.BackgroundColor3 = Color3.new(0.129412, 0.129412, 0.129412)
-	Notification.BackgroundTransparency = 0.20000000298023224
-	Notification.Position = UDim2.new(0.8340564370155334,0,0.6791545748710632,0)
-	Notification.Size = UDim2.new(0,353,0,127)
-
-	Text1.Parent = Notification
-	Text1.Name = "Text1"
-	Text1.BackgroundColor3 = Color3.new(1, 1, 1)
-	Text1.BackgroundTransparency = 1
-	Text1.BorderColor3 = Color3.new(1, 0, 0.0156863)
-	Text1.Size = UDim2.new(0,353,0,36)
-	Text1.Font = Enum.Font.GothamBold
-	Text1.Text = [[Text1]]
-	Text1.TextColor3 = Color3.new(1, 1, 1)
-	Text1.TextSize = 20
-
-	Cut.Parent = Notification
-	Cut.Name = "Cut"
-	Cut.BackgroundColor3 = Color3.new(1, 0, 0)
-	Cut.BackgroundTransparency = -0.009999999776482582
-	Cut.BorderSizePixel = 0
-	Cut.Position = UDim2.new(0,0,0.28346458077430725,0)
-	Cut.Size = UDim2.new(0,353,0,1)
-
-	UIGradient.Parent = Cut
-	UIGradient.Name = "UIGradient"
-	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(33, 33, 33)), ColorSequenceKeypoint.new(0.49, Color3.fromRGB(255, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(33, 33, 33))}
-
-	UIStroke.Parent = Notification
-	UIStroke.Name = "UIStroke"
-	UIStroke.Color = Color3.new(0.635294, 0, 0.00784314)
-
-	Text2.Parent = Notification
-	Text2.Name = "Text2"
-	Text2.BackgroundColor3 = Color3.new(1, 1, 1)
-	Text2.BackgroundTransparency = 1
-	Text2.BorderColor3 = Color3.new(1, 0, 0.0156863)
-	Text2.Position = UDim2.new(0,0,0.29133859276771545,0)
-	Text2.Size = UDim2.new(0,353,0,67)
-	Text2.Font = Enum.Font.GothamBold
-	Text2.Text = [[hi guys did you know that]]
-	Text2.TextColor3 = Color3.new(1, 1, 1)
-	Text2.TextScaled = true
-	Text2.TextSize = 20
-	Text2.TextWrapped = true
-	Text2.TextYAlignment = Enum.TextYAlignment.Top
-
-	Frame.Parent = Notification
-	Frame.Name = "Frame"
-	Frame.BackgroundColor3 = Color3.new(0, 0.615686, 0.0509804)
-	Frame.Position = UDim2.new(0.01983002759516239,0,0.8188976645469666,0)
-	Frame.Size = UDim2.new(0,338,0,16)
+	easport.Name = "easport"
+	easport.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	easport.BorderColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	easport.BorderSizePixel = 7
+	easport.Position = UDim2.new(0.46882307529449463,0,0.3422550559043884,0)
+	easport.Size = UDim2.new(0.5,0,0.1695294827222824,0)
 	
+	NotifStroke.Parent = easport
+	NotifStroke.Name = "UIStroke"
+	NotifStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	NotifStroke.Color = Color3.new(0.490196, 0.490196, 0.490196)
+	NotifStroke.LineJoinMode = Enum.LineJoinMode.Bevel
+	NotifStroke.Thickness = 4
+	
+	NotifT.Parent = easport
+	NotifT.Name = "NotifT"
+	NotifT.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	NotifT.BackgroundTransparency = 1
+	NotifT.Position = UDim2.new(0,0,0,0)
+	NotifT.Size = UDim2.new(0,474,0,30)
+	NotifT.Font = Enum.Font.Arcade
+	NotifT.Text = [[NotifTitle]]
+	NotifT.TextColor3 = Color3.new(1, 1, 1)
+	NotifT.TextSize = 20
+	NotifT.TextXAlignment = Enum.TextXAlignment.Center
+	
+	NotifC.Parent = easport
+	NotifC.Name = "NotifC"
+	NotifC.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+	NotifC.BackgroundTransparency = 1
+	NotifC.Position = UDim2.new(0,0,0.200,0)
+	NotifC.Size = UDim2.new(0,474,0,70)
+	NotifC.Font = Enum.Font.Arcade
+	NotifC.Text = [[NotifContent]]
+	NotifC.TextColor3 = Color3.new(1, 1, 1)
+	NotifC.TextSize = 20
+    NotifC.TextWrapped = true
+	NotifC.TextXAlignment = Enum.TextXAlignment.Center
+
+	-- UIAspectRatioConstraint_1.Parent = ImageLabel
+	-- UIAspectRatioConstraint_1.AspectRatio = 1
+
+	UIAspectRatioConstraint_2.Parent = NotifT
+	UIAspectRatioConstraint_2.AspectRatio = 13.233
+	UIAspectRatioConstraint_2.AspectType = Enum.AspectType.ScaleWithParentSize
+
+	UIAspectRatioConstraint_3.Parent = NotifC
+	UIAspectRatioConstraint_3.AspectRatio = 5.671
+	UIAspectRatioConstraint_3.AspectType = Enum.AspectType.ScaleWithParentSize
+
+    UIAspectRatioConstraint_4.Parent = easport
+    UIAspectRatioConstraint_4.Name = "UIAspectRatioConstraint"
+    UIAspectRatioConstraint_4.AspectRatio = 4.722
+    UIAspectRatioConstraint_4.AspectType = Enum.AspectType.ScaleWithParentSize
+
 	Frames.Name = "Frames"
 	Frames.Parent = ScreenGui
 
@@ -478,7 +490,7 @@ function module:CreateGui(name: string)
 	local LastPos = 0
 	local First = 1
 	local vis = false
-	local Activate = Global.Activate
+	local Activate = Global.__UH__Activate
 	Hide.Visible = vis
 	local UserInputService = game:GetService("UserInputService")
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
@@ -495,22 +507,19 @@ function module:CreateGui(name: string)
 	function Window:Notify(Settings: table)
 		task.spawn(function()
 		if type(Settings) ~= "table" then
-			Settings = {
-				["Title"]   = "No Title",
-				["Message"] = "No Message",
-				["Time"]    = 5
-			}
+			Settings = table.clone(NSettingTemplate)
 		end
-		for _,v in pairs(Settings) do
-			if not TableFind(NSettingTemplate, v) then
-				table.insert(Settings, NSettingTemplate[v])
+		for n,v in pairs(Settings) do
+			if not TableFind(NSettingTemplate, n) then
+				table.insert(Settings, NSettingTemplate[n])
 			end
 		end
 		local no = {}
-		local n = Notification:Clone()
+		local n = easport:Clone()
 		n.Parent = NotifScroll
 			n.BackgroundTransparency = 1
-			for _,v in pairs(n:GetChildren()) do
+			n.NotifT.TextColor3 = Settings["Color"]
+			for _,v in pairs(n:GetDescendants()) do
 				if v:IsA("GuiObject") and v.BackgroundTransparency == 0 then
 					v.BackgroundTransparency = 1
 				else
@@ -520,7 +529,6 @@ function module:CreateGui(name: string)
 					v.TextTransparency = 1
 					continue
 				end
-				v.Transparency = 1
 			end
 					local goal = {}
 			goal.BackgroundTransparency = 0
@@ -530,7 +538,7 @@ function module:CreateGui(name: string)
 			goal3.Transparency = 0
 		local tweenInfo = TweenInfo.new(0.5)
 			TweenService:Create(n, tweenInfo, goal):Play()
-			for _,v in pairs(n:GetChildren()) do
+			for _,v in pairs(n:GetDescendants()) do
 				if v:IsA("GuiObject") and not TableFind(no, v) then
 					TweenService:Create(v, tweenInfo, goal):Play()
 				end
@@ -538,17 +546,9 @@ function module:CreateGui(name: string)
 					TweenService:Create(v, tweenInfo, goal2):Play()
 					continue
 				end
-				TweenService:Create(v, tweenInfo, goal3):Play()
 			end
-		n.Frame.Size = UDim2.fromOffset(0, 16)
-		n.Text1.Text = Settings["Title"]
-		n.Text2.Text = Settings["Message"]
-		n.Frame:TweenSize(UDim2.fromOffset(338, 16),
-			Enum.EasingDirection.In,    -- easingDirection (default Out)
-			Enum.EasingStyle.Sine,      -- easingStyle (default Quad)
-			Settings["Time"],                          -- time (default: 1)
-			true                      -- should this tween override ones in-progress? (default: false)
-		)
+		n.NotifT.Text = Settings["Title"]
+		n.NotifC.Text = Settings["Message"]
 		wait(Settings["Time"])
 			local goal = {}
 			goal.BackgroundTransparency = 1
@@ -558,7 +558,7 @@ function module:CreateGui(name: string)
 			goal3.Transparency = 1
 		local tweenInfo = TweenInfo.new(0.4)
 			TweenService:Create(n, tweenInfo, goal):Play()
-			for _,v in pairs(n:GetChildren()) do
+			for _,v in pairs(n:GetDescendants()) do
 				if v:IsA("GuiObject") then
 					TweenService:Create(v, tweenInfo, goal):Play()
 				end
@@ -566,7 +566,6 @@ function module:CreateGui(name: string)
 					TweenService:Create(v, tweenInfo, goal2):Play()
 					continue
 				end
-				TweenService:Create(v, tweenInfo, goal3):Play()
 			end
 			wait(tweenInfo.Time)
 			n:Destroy()
@@ -824,6 +823,12 @@ function module:CreateGui(name: string)
 			end
 			Thing:WaitForChild("LastBut").Value = but
 			-- print(Thing:WaitForChild("LastBut").Value)
+			local Pages = but.DropFrame.Scrolling
+			local layout = Pages:FindFirstChildWhichIsA("UIListLayout")
+			Pages.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y)
+                        layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+                              Pages.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y)
+                        end)
 
 			local function Update(New)
 				local TextLab = but.Open.TextLabel
