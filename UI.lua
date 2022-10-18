@@ -63,7 +63,7 @@ function module:CreateGui(name: string)
 		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then AlreadyLoaded = true	end
 	end
 	if Global.__UH__UI or Global.__UH__IsLoaded then AlreadyLoaded = true end
-	if AlreadyLoaded == true then return end
+--	if AlreadyLoaded == true then return end
 	if Global.__UH__Activate == nil then Global.__UH__Activate = "rightshift" end
 
 	-- # Globals Initialisation
@@ -146,9 +146,10 @@ function module:CreateGui(name: string)
 
     NotifScroll.Parent = ScreenGui
 	NotifScroll.Name = "NotifScroll"
+	NotifScroll.ClipsDescendants = false
 	NotifScroll.BackgroundColor3 = Color3.new(0.188235, 0.188235, 0.188235)
 	NotifScroll.BackgroundTransparency = 1
-	NotifScroll.Position = UDim2.new(0.5,0,0,0)
+	NotifScroll.Position = UDim2.new(0.5,-5,0,15)
 	NotifScroll.Selectable = false
 	NotifScroll.Size = UDim2.new(0.5,0,1,0)
 	NotifScroll.CanvasSize = UDim2.new(0,0,1,0)
@@ -168,14 +169,14 @@ function module:CreateGui(name: string)
 	easport.BorderColor3 = Color3.new(0.121569, 0.121569, 0.121569)
 	easport.BorderSizePixel = 7
 	easport.Position = UDim2.new(0.46882307529449463,0,0.3422550559043884,0)
-	easport.Size = UDim2.new(0.3888256847858429,0,0.1695294827222824,0)
+	easport.Size = UDim2.new(0.5,0,0.1695294827222824,0)
 	
 	NotifStroke.Parent = easport
 	NotifStroke.Name = "UIStroke"
 	NotifStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 	NotifStroke.Color = Color3.new(0.490196, 0.490196, 0.490196)
 	NotifStroke.LineJoinMode = Enum.LineJoinMode.Bevel
-	NotifStroke.Thickness = 5
+	NotifStroke.Thickness = 4
 	
 	NotifT.Parent = easport
 	NotifT.Name = "NotifT"
@@ -193,12 +194,13 @@ function module:CreateGui(name: string)
 	NotifC.Name = "NotifC"
 	NotifC.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
 	NotifC.BackgroundTransparency = 1
-	NotifC.Position = UDim2.new(0,0,0.298,0)
+	NotifC.Position = UDim2.new(0,0,0.200,0)
 	NotifC.Size = UDim2.new(0,474,0,70)
 	NotifC.Font = Enum.Font.Arcade
 	NotifC.Text = [[NotifContent]]
 	NotifC.TextColor3 = Color3.new(1, 1, 1)
 	NotifC.TextSize = 20
+    NotifC.TextWrapped = true
 	NotifC.TextXAlignment = Enum.TextXAlignment.Center
 
 	-- UIAspectRatioConstraint_1.Parent = ImageLabel
@@ -920,6 +922,5 @@ function module:CreateGui(name: string)
 
 	return Window
 end
-
 
 return module
