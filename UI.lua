@@ -63,8 +63,8 @@ function module:CreateGui(name: string)
 		if v:IsA("ScreenGui") and v:GetAttribute("Loaded") ~= nil then AlreadyLoaded = true	end
 	end
 	if Global.__UH__UI or Global.__UH__IsLoaded then AlreadyLoaded = true end
---	if AlreadyLoaded == true then return end
-	if Global.__UH__Activate == nil then Global.__UH__Activate = "rightshift" end
+	if AlreadyLoaded == true then return end
+	if Global.__UH__Activate == nil then Global.__UH__Activate = "rightcontrol" end
 
 	-- # Globals Initialisation
 	Global.__UH__IsLoaded = true
