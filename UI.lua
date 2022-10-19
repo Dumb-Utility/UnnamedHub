@@ -68,6 +68,11 @@ function module:CreateGui(name: string)
 
 	-- # Globals Initialisation
 	Global.__UH__IsLoaded = true
+	
+	game:GetService("StarterGui"):SetCore("SendNotification", { 
+	Title = "Welcome !";
+	Text = "Press "..Global.__UH__Activate.." to open the UI";
+	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
 
 	--# UI Parts
 
