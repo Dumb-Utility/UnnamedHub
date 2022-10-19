@@ -64,11 +64,16 @@ function module:CreateGui(name: string)
 	end
 	if Global.__UH__UI or Global.__UH__IsLoaded then AlreadyLoaded = true end
 --	if AlreadyLoaded == true then return end
-	if Global.__UH__Activate == nil then Global.__UH__Activate = "rightshift" end
+	if Global.__UH__Activate == nil then Global.__UH__Activate = "rightcontrol" end
 
 	-- # Globals Initialisation
 	Global.__UH__IsLoaded = true
-
+	
+	game:GetService("StarterGui"):SetCore("SendNotification", { 
+	Title = "Welcome !";
+	Text = "Press "..Global.__UH__Activate.." to open the UI";
+	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+	
 	--# UI Parts
 
 	local ScreenGui = Instance.new("ScreenGui")
