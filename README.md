@@ -25,3 +25,7 @@ You only need to copy and paste this script into your executor and execute it.
 -- UnnamedHub by that one guy called Error-Cezar.
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/main/UH.lua'))()
 ```
+
+***OR***
+
+You can download the loader directly from our [RELEASES](https://github.com/Dumb-Utility/UnnamedHub/releases/latest)
