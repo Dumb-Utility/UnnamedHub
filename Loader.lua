@@ -22,6 +22,7 @@ local Global = getgenv and getgenv() or _G
       return
    end
    
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Dumb-Utility/UnnamedStorage/main/BypassBackup.lua"))()
 local Decryptor = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedStorage/main/Decryptor.lua"))()
 
    function notify(Message)
