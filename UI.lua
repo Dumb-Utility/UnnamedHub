@@ -417,7 +417,7 @@ InputBox_2.SizeConstraint = Enum.SizeConstraint.RelativeXX
 InputBox_2.Font = Enum.Font.SourceSans
 InputBox_2.PlaceholderText = "..."
 InputBox_2.Text = ""
-InputBox_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+InputBox_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 InputBox_2.TextSize = 14.000
 
 UICorner_3.Parent = InputBox_2
@@ -494,7 +494,7 @@ function MainFunctions:Create()
 
         function PageFunctions:Input(Name, MaxChar)
             local ok = {}
-            if typeof(MaxChar) ~= "number" then MaxChar = 0 end
+            if typeof(MaxChar) ~= "number" then print("nigg") MaxChar = 0 end
             local Toggle = InputBox:Clone()
             Toggle.Parent = S
             Toggle.InputName.Text = Name
