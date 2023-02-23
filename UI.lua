@@ -417,8 +417,8 @@ InputBox_2.SizeConstraint = Enum.SizeConstraint.RelativeXX
 InputBox_2.Font = Enum.Font.SourceSans
 InputBox_2.PlaceholderText = "..."
 InputBox_2.Text = ""
-InputBox_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-InputBox_2.TextSize = 14.000
+InputBox_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+InputBox_2.TextSize = 16.000
 
 UICorner_3.Parent = InputBox_2
 
