@@ -417,8 +417,8 @@ InputBox_2.SizeConstraint = Enum.SizeConstraint.RelativeXX
 InputBox_2.Font = Enum.Font.SourceSans
 InputBox_2.PlaceholderText = "..."
 InputBox_2.Text = ""
-InputBox_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-InputBox_2.TextSize = 16.000
+InputBox_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+InputBox_2.TextSize = 14.000
 
 UICorner_3.Parent = InputBox_2
 
@@ -496,11 +496,11 @@ function MainFunctions:Create()
             local ok = {}
             if typeof(MaxChar) ~= "number" then MaxChar = 0 end
             local Toggle = InputBox:Clone()
-            InputBox.Parent = S
+            Toggle.Parent = S
             Toggle.InputName.Text = Name
             Toggle.InputBox.Changed:Connect(function()
                 if MaxChar ~= 0 then
-                    Toggle.InputBox.Text = Toggle.InputBox.Text:sub(1,10)
+                    Toggle.InputBox.Text = Toggle.InputBox.Text:sub(1,MaxChar)
                 end
                 -- Toggle.InputBox.Size = calculateSize(Toggle.InputBox, Toggle.InputBox.Text, MaxChar)
             end)
