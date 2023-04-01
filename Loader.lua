@@ -27,13 +27,13 @@ local Decryptor = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dum
 
    function notify(Message)
       game:GetService("StarterGui"):SetCore("SendNotification", {
-         Title = "UnnamedHub - Paid";
+         Title = "UnnamedHub - Beta";
          Text = Message;
          Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
       end
 
       local Request = (syn and syn.request) or request or http_request
-      if not Request then notify("Not HTTP Found") return end
+      if not Request then notify("No HTTP Found") return end
 
       local games = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dumb-Utility/UnnamedHub/Beta/games.lua"))()
 
@@ -46,6 +46,7 @@ local Decryptor = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dum
                   ["playeruserid"] = ID
                }
             }).Body
+            notify("UnnamedHub is loading...")
             Decryptor:LoadScript(r)
             loaded = true
          end
