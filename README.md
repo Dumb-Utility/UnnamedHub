@@ -1,4 +1,5 @@
 *UnnamedHub now have 100+ commits !*
+## THIS VERSION IS NOW CONSIDERED AS LEGACY, A REWORK IS CURRENTLY UNDER TESTING.
 <div align="center">
 <br/>
 <h1 style="font-size: 700px;"> UnnamedHub </h1>
